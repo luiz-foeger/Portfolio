@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troca de Conteúdo com Animação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            font-size: 2em;
+            color: #333;
+            border-right: .15em solid orange;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: typing 2s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: orange }
+        }
+    </style>
+</head>
+<body>
+    <h1 id="titulo"></h1>
+
+    <script>
+        const titulos = ["Texto Inicial", "Texto Alternativo 1", "Texto Alternativo 2"];
+        let indiceAtual = 0;
+        const tituloElement = document.getElementById('titulo');
+
+        function atualizarTitulo() {
+            tituloElement.style.width = '0';
+            tituloElement.style.animation = 'none';
+
+            setTimeout(() => {
+                indiceAtual = (indiceAtual + 1) % titulos.length;
+                tituloElement.textContent = titulos[indiceAtual];
+                tituloElement.style.animation = 'typing 2s steps(40, end), blink-caret .75s step-end infinite';
+                tituloElement.style.width = '100%';
+            }, 500);
+        }
+
+        tituloElement.textContent = titulos[indiceAtual];
+        tituloElement.style.width = '100%';
+        setInterval(atualizarTitulo, 4000); // troca a cada 4000 milissegundos (4 segundos)
+    </script>
+</body>
+</html>
