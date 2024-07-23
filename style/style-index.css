@@ -9,26 +9,72 @@
 body {
     font-family: "Zain", sans-serif;
     font-weight: 400;
+    background-color: #000000;
+}
+
+header {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.container-header {
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.container-header ul li {
+    font-size: 26px;
+    display: inline-flex;
+}
+
+.container-header ul li a {
+    color: #fff;
+    text-decoration: none;
+    margin: 20px;
 }
 
 .section-descricao {
+    background-image: url(../img/background.png);
+    /* background-color: #000000; */
+    background-size: cover;
+    background-position: center;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 900px;
     margin: 0;
-    background-color: #1c1b1e;
+    top: 0;
+    /* background-color: #1c1b1e; */
+    text-align: center;
 }
 
 h1 {
-    font-size: 2.5em;
+    font-size: 4em;
     color: #fff;
 }
 
+#nome {
+    font-size: 5em;
+    color: #fff;
+    margin: 0;
+}
+
 #titulo {
+    font-size: 4.5em;
     background-image: -webkit-linear-gradient(0deg, #27ddfd 6%, #e45ed4 73%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     
+}
+
+.section-sobre {
+    height: 400px;
+    box-shadow: 0px -34px 40px 39px rgba(0,0,0,1);
+    -webkit-box-shadow: 0px -34px 40px 39px rgba(0,0,0,1);
+    -moz-box-shadow: 0px -34px 40px 39px rgba(0,0,0,1);
 }
