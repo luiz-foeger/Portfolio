@@ -1,4 +1,4 @@
-const titulos = ["Site Developer", "Graphic Designer"];
+const titulos = ["Front-End Developer", "Graphic Designer", "Web Designer"];
 let indiceAtual = 0;
 
 setInterval(() => {
