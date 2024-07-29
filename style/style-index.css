@@ -100,7 +100,15 @@ section {
 }
 
 .destaque {
+    border-top: solid 0.5px #a488e23d;
     font-size: 2em;
+    line-height: 2em;
+    margin: 0px;
+    text-align: center;
+}
+
+.destaque2 {
+    font-size: 1.5em;
     line-height: 2em;
     margin: 0px;
     text-align: center;
@@ -117,7 +125,8 @@ section {
 
 .div-projeto {
     position: relative;
-    width: 50%;
+    margin-bottom: 110px;
+    /* width: 50%; */
 }
 
 .image1 {
@@ -126,21 +135,24 @@ section {
 }
 
 .image2 {
-    width: 1080px;
+    width: 1065px;
     height: auto;
+    position: absolute;
+}
+
+
+#div-imagem {
     position: absolute;
     top: 0;
     left: 0;
     margin-top: 75px;
     margin-left: 160px;
-    max-height: 500px;
-    overflow-y: auto;
-    object-fit: cover;
-    
+    background-color: #686868;
+    width: 1080px; /* Largura fixa */
+    height: 670px; /* Altura fixa */
+    overflow-y: scroll; /* Permite a rolagem vertical */
+    overflow-x: hidden; /* Permite a rolagem vertical */
+    border: 1px solid #ccc;
 }
 
 
-.div-imagem {
-    width: auto;
-    height: 650px; 
-}

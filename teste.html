@@ -1,38 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imagem com Barra de Rolagem</title>
+    <title>Sobre Mim</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<style>
-    body {
+<style>body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    overflow: hidden; /* Evita rolagem na página principal */
+    min-height: 100vh;
 }
 
-.image-container {
-    width: 50%; /* Defina a largura desejada */
-    height: 100vh; /* Altura igual à da viewport */
-    overflow-y: scroll; /* Permite a rolagem vertical */
+.section-sobre {
+    background-color: #fff;
+    padding: 40px;
+    margin: 20px;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
-.image-container img {
-    width: 100%;
-    height: auto; /* Mantém a proporção da imagem */
-    display: block;
+.destaque {
+    text-align: center;
+    font-size: 2.5em;
+    color: #007BFF;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #007BFF;
+    display: inline-block;
+    padding-bottom: 10px;
 }
 
+.section-sobre p {
+    margin: 10px 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.section-sobre strong {
+    color: #007BFF;
+}
+
+@media (max-width: 600px) {
+    .section-sobre {
+        padding: 20px;
+        width: 90%;
+    }
+
+    .destaque {
+        font-size: 2em;
+    }
+
+    .section-sobre p {
+        font-size: 1em;
+    }
+}
 </style>
 <body>
-    <div class="image-container">
-        <img src="sua-imagem.jpg" alt="Imagem com rolagem">
-    </div>
+    <section id="sobre-mim" class="section-sobre">
+        <article>
+            <h1 class="destaque">Mais Sobre Mim</h1>
+            <p>
+                Minha jornada no mundo da tecnologia começou com um forte interesse em Design Gráfico, porém, desde 2023
+                tenho explorado a área do Desenvolvimento Front-End e Back-End.
+            </p>
+            <p>
+                Essa paixão pela programação me levou a explorar diversas linguagens, incluindo <strong>HTML</strong>,
+                <strong>CSS</strong>, <strong>JavaScript</strong>, <strong>React</strong> e <strong>PHP</strong>,
+                habilidades que busco aperfeiçoar cada vez mais!
+            </p>
+            <p>
+                Meu foco principal é o desenvolvimento de interfaces criativas e intuitivas, sempre com uma abordagem
+                centrada na experiência do usuário, proporcionando uma experiência única e envolvente.
+            </p>
+        </article>
+    </section>
 </body>
 </html>
