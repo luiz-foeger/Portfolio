@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrossel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.carousel {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.carousel-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 100%;
+    transition: left 0.5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+}
+
+.carousel-content.active {
+    left: 0;
+}
+
+.carousel-content.out {
+    left: -100%;
+}
+
+.carousel-content.in {
+    left: 100%;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+</style>
+<body>
+    <div class="carousel">
+        <div class="carousel-content active" id="div1">Conteúdo da Div 1</div>
+        <div class="carousel-content" id="div2">Conteúdo da Div 2</div>
+        <div class="carousel-content" id="div3">Conteúdo da Div 3</div>
+    </div>
+    <div class="buttons">
+        <button id="prev-button">Anterior</button>
+        <button id="next-button">Próximo</button>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+const contents = document.querySelectorAll('.carousel-content');
+
+document.getElementById('next-button').addEventListener('click', () => {
+    changeSlide(1);
+});
+
+document.getElementById('prev-button').addEventListener('click', () => {
+    changeSlide(-1);
+});
+
+function changeSlide(direction) {
+    contents[currentIndex].classList.remove('active');
+    contents[currentIndex].classList.add(direction === 1 ? 'out' : 'in');
+    
+    currentIndex = (currentIndex + direction + contents.length) % contents.length;
+    
+    contents[currentIndex].classList.remove('out', 'in');
+    contents[currentIndex].classList.add('active');
+
+    setTimeout(() => {
+        contents.forEach((content, index) => {
+            if (index !== currentIndex) {
+                content.style.left = '100%';
+            }
+        });
+    }, 500);
+}
+
+    </script>
+</body>
+</html>

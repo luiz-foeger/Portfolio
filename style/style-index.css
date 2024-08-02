@@ -122,7 +122,7 @@ strong {
     color: transparent;
     user-select: none;
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: rgba(255, 255, 255, 0.11);
+    -webkit-text-stroke-color: rgba(255, 255, 255, 0.070);
     text-wrap: nowrap;
     position: absolute;
 }
@@ -153,7 +153,7 @@ strong {
     line-height: 2em;
     margin: 0px;
     text-align: center;
-    color: #8dcffb;    
+    color: #8dcffb;
 }
 
 .section-projetos {
@@ -166,13 +166,34 @@ strong {
 }
 
 .section-projetos h3 {
-    font-size: 2.5em;
+    font-size: 2.4em;
     color: white;
+    text-align: center;
 }
 
 .section-projetos a {
     color: white;
     font-size: 1.5em;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-top-right-radius: 777px;
+    border-bottom-right-radius: 777px;
+    border-bottom-left-radius: 777px;
+    position: absolute;
+    margin-top: 350px;
+    margin-left: 1030px;
+    background: rgba(65, 133, 179, 0.44);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(13.3px);
+    -webkit-backdrop-filter: blur(13.3px);
+    border: 1px solid rgba(65, 133, 179, 0.01);
+    transition: ease 0.2s;
+    z-index: 999;
+}
+
+.section-projetos a:hover {
+    transform: translateX(10px);
+
 }
 
 .section-projetos p {
@@ -189,13 +210,15 @@ strong {
     /* width: 50%; */
 }
 
-.image1 {
-    width: 1400px;
+.laptop {
+    /* width: 1400px; */
+    width: 1200px;
     height: auto;
 }
 
-.image2 {
-    width: 1068px;
+.demo-projeto {
+    /* width: 1068px; */
+    width: 922px;
     height: auto;
     position: absolute;
 }
@@ -205,11 +228,15 @@ strong {
     position: absolute;
     top: 0;
     left: 0;
-    margin-top: 75px;
-    margin-left: 160px;
+    /* margin-top: 75px;
+    margin-left: 160px; */
+    margin-top: 65px;
+    margin-left: 139px;
     background-color: #686868;
-    width: 1080px;
-    height: 670px;
+    /* width: 1080px;
+    height: 670px; */
+    width: 922px;
+    height: 575px;
     overflow-y: scroll;
     overflow-x: hidden;
     border: 1px solid #ccc;
