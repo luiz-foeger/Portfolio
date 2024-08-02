@@ -46,7 +46,6 @@ section {
 }
 
 .section-introducao {
-
     background-size: cover;
     background-position: center;
     display: flex;
@@ -89,7 +88,7 @@ section {
     font-size: 55px;
     margin-top: 100px;
     padding: 0px 30px;
-
+    transition: ease 0.2s;
 }
 
 
@@ -253,11 +252,9 @@ strong {
     overflow-y: scroll;
     overflow-x: hidden;
     border: 1px solid #ccc;
-}
-
-#div-imagem {
     scrollbar-width: thin;
-    scrollbar-color: #5f5f5f #bfbfbf;
+    scrollbar-color: #8c8c8c #bfbfbf;
+    /* scrollbar-color: #5f5f5f #bfbfbf; */
 }
 
 
@@ -275,3 +272,149 @@ strong {
     margin-top: 100px;
     font-size: 100px;
 } */
+
+@media screen and (max-width: 1500px) {
+    .section-introducao h1 {
+        font-size: 4em;
+        color: #fff;
+        margin: 0;
+    }
+
+    .section-introducao h2 {
+        font-size: 2.5em;
+        color: #fff;
+        margin: 15px 0px;
+    }
+
+    .section-introducao {
+        height: 700px;
+    }
+
+    .subtitulo {
+        font-size: 3.5em;
+    }
+
+    .subtitulo-fundo {
+        font-size: 300px;
+    }
+
+    .section-sobre p {
+        font-size: 21px;
+        line-height: 170%;
+        color: #fff;
+    }
+
+    .section-sobre article {
+        max-width: 850px;
+    }
+
+    .section-projetos h3 {
+        font-size: 2em;
+        color: white;
+        text-align: center;
+    }
+
+    .div-projeto {
+        position: relative;
+        margin-bottom: 110px;
+        display: flex;
+        flex-direction: column;
+        /* width: 50%; */
+    }
+
+    .laptop {
+        /* width: 1400px; */
+        width: 1000px;
+        height: auto;
+    }
+
+    .demo-projeto {
+        /* width: 1068px; */
+        width: 780px;
+        height: auto;
+        position: absolute;
+    }
+
+    #div-imagem {
+        margin-top: 53px;
+        margin-left: 115px;
+        width: 770px;
+        height: 480px;
+    }
+
+    .section-projetos a {
+        font-size: 1.1em;
+        margin-top: 333px;
+        margin-left: 850px;
+    }
+}
+
+@media screen and (max-width: 670px) {
+    .section-header ul li {
+        font-size: 0.7em;
+    }
+
+    .section-header ul li a {
+        margin: 20px 15px;
+    }
+
+    .section-introducao {
+        height: 500px;
+    }
+
+    .section-introducao h1 {
+        font-size: 1.8em;
+        color: #fff;
+        margin: 0;
+    }
+
+    .section-introducao h2 {
+        font-size: 1.5em;
+        color: #fff;
+        margin: 15px 0px;
+    }
+
+    .section-sobre {
+        height: auto;
+    }
+
+    .colorido {
+        font-size: 1.5em;
+    }
+
+    .section-sobre h3 {
+        font-size: 1.5em;
+    }
+
+    .section-sobre article {
+        max-width: 300px;
+    }
+
+    .section-sobre p {
+        font-size: 14px;
+        line-height: 150%;
+        color: #fff;
+    }
+
+    strong {
+        font-size: 16px;
+    }
+
+    .links a {
+        font-size: 35px;
+        padding: 0px 15px;
+        margin-top: 40px;
+    }
+
+    .subtitulo {
+        font-size: 2em;
+    }
+
+    .subtitulo-fundo {
+        font-size: 100px;
+    }
+
+    .section-projetos {
+        display: none;
+    }
+}
