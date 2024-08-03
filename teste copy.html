@@ -3,29 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Círculo Animado</title>
+    <title>Animação de Fade In</title>
     <style>
-        .circle {
-            width: 100px;
-            height: 100px;
-            background-color: blue;
-            border-radius: 50%;
-            position: relative;
-            animation: moveUpDown 1s infinite;
-            transition: ease 0.2s;
+        body {
+            height: 300vh; /* Para permitir rolagem */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
         }
-
-        @keyframes moveUpDown {
-            0%, 100% {
-                top: 0;
-            }
-            50% {
-                top: -10px;
-            }
+        .fade-in {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .fade-in-below {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .fade-in-below.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <div class="circle"></div>
+    <div class="fade-in">
+        <article>
+            <h1>Título do Artigo</h1>
+            <p>Este é o conteúdo do artigo que aparecerá com um efeito de fade vindo do lado esquerdo ao rolar a tela para baixo.</p>
+        </article>
+    </div>
+
+    <div class="fade-in-below">
+        <article>
+            <h1>Segundo Artigo</h1>
+            <p>Este é o conteúdo do segundo artigo que aparecerá com um efeito de fade vindo de baixo ao rolar a tela para baixo.</p>
+        </article>
+    </div>
+
+    <script>
+        document.addEventListener('scroll', function() {
+            const fadeInSection = document.querySelector('.fade-in');
+            const fadeInBelowSection = document.querySelector('.fade-in-below');
+            const sectionPosition = fadeInSection.getBoundingClientRect().top;
+            const belowSectionPosition = fadeInBelowSection.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.3;
+
+            if (sectionPosition < screenPosition) {
+                fadeInSection.classList.add('visible');
+            }
+
+            if (belowSectionPosition < screenPosition) {
+                fadeInBelowSection.classList.add('visible');
+            }
+        });
+    </script>
 </body>
 </html>
