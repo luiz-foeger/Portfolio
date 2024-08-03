@@ -6,8 +6,6 @@ setInterval(() => {
     document.getElementById('titulo').textContent = titulos[indiceAtual];
 }, 2000); // troca a cada 2000 milissegundos (2 segundos)
 
-
-
 document.addEventListener('scroll', function () {
     const sectionSobre = document.querySelector('.section-sobre');
     const sectionProjetos = document.querySelector('.section-projetos');
