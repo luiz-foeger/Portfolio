@@ -216,6 +216,13 @@ strong {
     text-align: center;
 }
 
+.section-projetos .scroll {
+    position: absolute;
+    margin-top: -145px;
+    margin-right: 1050px;
+    z-index: 999;
+}
+
 .section-projetos a {
     color: white;
     font-size: 1.5em;
@@ -238,14 +245,6 @@ strong {
     text-wrap: nowrap;
     z-index: 999;
 }
-
-.section-projetos .scroll {
-    position: absolute;
-    margin-top: -145px;
-    margin-right: 1050px;
-    z-index: 999;
-}
-
 
 /* @keyframes moverSozinho {
     0%, 33.33%, 100% {
@@ -339,11 +338,10 @@ strong {
     justify-content: space-between;
     transform: translateY(-50%);
     z-index: 1;
-
 }
 
 .carousel-buttons button {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: transparent;
     color: white;
     border: none;
     padding: 10px;
@@ -354,6 +352,10 @@ strong {
     font-size: 45px;
 }
 
+
+.section-projetos-mobile {
+    display: none;
+}
 
 /* --------------------------------------- */
 
@@ -435,8 +437,15 @@ strong {
 
     .section-projetos a {
         font-size: 1.1em;
-        margin-top: 333px;
+        margin-top: -70px;
         margin-left: 850px;
+    }
+
+    .section-projetos .scroll {
+        position: absolute;
+        margin-top: -145px;
+        margin-right: 1050px;
+        z-index: 999;
     }
 }
 
@@ -507,5 +516,53 @@ strong {
 
     .section-projetos {
         display: none;
+    }
+
+    .section-projetos-mobile {
+        display: flex;
+    }
+
+    .carousel-inner-mobile {
+        /* display: flex; */
+        transition: transform 1s ease;
+    }
+
+    .carousel-item {
+        min-width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .carousel-buttons {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+        z-index: 1;
+    }
+    
+    .carousel-buttons button {
+        background-color: transparent;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+    }
+    
+    .carousel-buttons i {
+        font-size: 45px;
+    }
+    
+    
+
+    .phone {
+        /* width: 1400px; */
+        width: 300px;
+        height: auto;
     }
 }
