@@ -42,7 +42,6 @@ document.addEventListener('scroll', function() {
     }
 });
 
-
 // const carouselInner = document.querySelector('.carousel-inner');
 // const items = document.querySelectorAll('.carousel-item');
 // const prevButton = document.getElementById('prev');
