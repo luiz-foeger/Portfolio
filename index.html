@@ -13,7 +13,8 @@
 
 <body>
     <header>
-        <section class="section-header">
+        <section id="inicio" class="section-header">
+            <a href="#inicio" id="up"><i class="fa-solid fa-arrow-up"></i></a>
             <ul>
                 <li><a href="">Introdução</a></li>
                 <li><a href="#sobre-mim">Sobre mim</a></li>
@@ -28,16 +29,27 @@
         <section class="section-introducao">
             <div>
                 <h2>Olá, Bem vindo! ☕</h2>
-                <h1>Me chamo Luiz Felipe</h1>
+                <h1>Me chamo <strong>L</strong>uiz <strong>F</strong>elipe</h1>
                 <h3 class="colorido" id="titulo">— Web Designer —</h3>
 
             </div>
             <section class="links">
-                <a target="_blank" href="https://www.linkedin.com/in/luiz-foeger/"><i
-                        class="fa-brands fa-linkedin"></i></a>
-                <a target="_blank" href="https://github.com/luiz-foeger"><i class="fa-brands fa-square-github"></i></a>
-                <a target="_blank" href="https://www.behance.net/plenta"><i class="fa-brands fa-square-behance"></i></a>
-                <a target="_blank" href="mailto:foegerluiz@gmail.com"><i class="fa-solid fa-square-envelope"></i></a>
+                <div> <a target="_blank" href="https://www.linkedin.com/in/luiz-foeger/"><i
+                            class="fa-brands fa-linkedin"></i></a>
+                    <p>LinkedIn</p>
+                </div>
+                <div> <a target="_blank" href="https://github.com/luiz-foeger"><i
+                            class="fa-brands fa-square-github"></i></a>
+                    <p>GitHub</p>
+                </div>
+                <div> <a target="_blank" href="https://www.behance.net/plenta"><i
+                            class="fa-brands fa-square-behance"></i></a>
+                    <p>Behance</p>
+                </div>
+                <div> <a target="_blank" href="mailto:foegerluiz@gmail.com"><i
+                            class="fa-solid fa-square-envelope"></i></a>
+                    <p>Email</p>
+                </div>
             </section>
         </section>
 
@@ -45,7 +57,7 @@
 
         <section id="sobre-mim" class="section-sobre">
 
-            <h1 class="subtitulo">Mais Sobre Mim</h1>
+            <h1 class="subtitulo">Sobre Mim</h1>
             <h1 class="subtitulo-fundo">Sobre Mim</h1>
             <article>
                 <p>
@@ -54,20 +66,85 @@
                 </p>
                 <p>
                     Essa paixão pela programação me levou a explorar diversas linguagens e bibliotecas, como
-                    <strong>JavaScript</strong>, <strong>PHP</strong>, <strong>React</strong>, <strong>Node</strong>,
-                    <strong>Express</strong> e <strong>Flutter</strong> — habilidades que busco expandir e aperfeiçoar
+                    <strong>JavaScript</strong>, <strong>Python</strong>, <strong>Node.js</strong>,
+                    <strong>React</strong>,
+                    <strong>PHP</strong>, <strong>Flutter</strong>, etc. — habilidades que busco expandir e aperfeiçoar
                     constantemente! <br><br>
                 </p>
                 <p>
                     Meu foco principal é criar interfaces criativas e intuitivas, sempre com uma abordagem centrada na
-                    Experiência do Usuário, proporcionando uma experiência digital envolvente.
+                    Experiência do Usuário, proporcionando uma experiência digital divertida e envolvente.
                 </p>
             </article>
         </section>
+        <!-------------- TIPOS DE PROJETO -------------->
+
+        <h1 id="section-projetos" class="subtitulo">Meus Projetos</h1><br>
+        <section class="section-tipos">
+            <a href="" id="tipo-1" style="border-left: solid #21262d 1px;">
+                <div>
+                    <p>Landing Page</p>
+                    <h4>Ver projetos <i class="fa-solid fa-angle-right"></i></h4>
+                </div>
+            </a>
+            <a href="" id="tipo-2">
+                <div>
+                    <p>Catálogo</p>
+                    <h4>Ver projetos <i class="fa-solid fa-angle-right"></i></h4>
+                </div>
+            </a>
+            <a href="" id="tipo-3">
+                <div>
+                    <p>Loja Online</p>
+                    <h4>Ver projetos <i class="fa-solid fa-angle-right"></i></h4>
+                </div>
+            </a>
+        </section>
+
 
         <!-------------- Meus Projetos Desktop -------------->
 
-        <h1 id="section-projetos" class="subtitulo">Meus Projetos</h1><br>
+        <!-- <h1 id="section-projetos" class="subtitulo"></h1><br>
+        <section class="section-teste teste">
+            <div class="projeto">
+                <div class="projeto-titulo">
+                    <h3>EA SPORTS FC™ 24</h3>
+                    <p>Landing Page</p>
+                </div>
+                <div class="projeto-imagem">
+                    <img src="img/preview/projeto-1.png" alt="Projeto 1">
+                </div>
+            </div>
+            <div class="projeto">
+                <div class="projeto-titulo">
+                    <h3>CineDev</h3>
+                    <p>Catálogo de Filmes</p>
+                </div>
+                <div class="projeto-imagem">
+                    <img src="img/preview/projeto-2.png" alt="Projeto 1">
+                </div>
+            </div>
+            <div class="projeto">
+                <div class="projeto-titulo">
+                    <h3>StreetWear</h3>
+                    <p>Loja Online</p>
+                </div>
+                <div class="projeto-imagem">
+                    <img src="img/preview/projeto-3.png" alt="Projeto 1">
+                </div>
+            </div>
+            <div class="projeto">
+                <div class="projeto-titulo">
+                    <h3>Academia Equilíbrio</h3>
+                    <p>Landing Page</p>
+                </div>
+                <div class="projeto-imagem">
+                    <img src="img/preview/projeto-4.png" alt="Projeto 1">
+                </div>
+            </div>
+        </section> -->
+
+        <!-- <h1 id="section-projetos" class="subtitulo">Meus Projetos</h1><br>
         <section class="section-projetos carousel">
             <div class="carousel-inner">
                 <div class="carousel-item">
@@ -122,13 +199,12 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="carousel-item" style="background-color: blue;">Div 3</div> -->
             </div>
             <div class="carousel-buttons">
                 <button id="prev"><i class="fa-solid fa-chevron-left"></i></button>
                 <button id="next"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
-        </section>
+        </section> -->
 
         <!-------------- Meus Projetos Media Query Mobile -------------->
 
