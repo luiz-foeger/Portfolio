@@ -8,7 +8,6 @@ import NaoEncontrada from './components/NaoEncontrada/NaoEncontrada';
 // Importação das páginas
 import Home from './paginas/home';
 import PaginaLancamentos from './paginas/lancamentos';
-import PaginaPopulares from './paginas/populares';
 import PaginaRecomendados from './paginas/recomendados';
 import PaginaDetalhes from './paginas/detalhes';
 
@@ -20,10 +19,10 @@ function App() {
       <Header />      
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/lancamentos" element={<PaginaLancamentos />} />
+        {/* <Route path="/lancamentos" element={<PaginaLancamentos />} />
         <Route path="/populares" element={<PaginaPopulares />} />
         <Route path="/recomendados" element={<PaginaRecomendados />} />
-        <Route path="/detalhes/:id" element={<PaginaDetalhes />} />
+        <Route path="/detalhes/:id" element={<PaginaDetalhes />} /> */}
         <Route path="/*" element={<NaoEncontrada />} />
       </Routes>
       
