@@ -1,0 +1,123 @@
+.error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    align-self: center;
+    text-align: center;
+    flex-wrap: wrap;
+    padding: 50px 40px;
+    height: 100%;
+    display: flex;
+}
+
+.error img {    
+    width: 35%;
+}
+
+.error p {
+    margin-top: 25px;
+    max-width: 750px;
+    font-size: 19px;
+}
+
+.error h1 {
+    font-size: 30px;
+    max-width: 400px;
+    text-align: center;
+}
+
+.error div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+/* .error button {
+    background-color: #13315C;
+    color: #fff;
+    padding: 8px;
+    margin-top: 10px;
+    border-radius: 5px;
+    width: 220px;
+    min-height: 70px;
+    border: 0;
+    font-size: 16px;
+} */
+
+.error button {
+    color: #fff;
+    background-color: #4d4d4dad;
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 35px;
+    width: 160px;
+    min-height: 55px;
+    border: 0;
+    font-weight: bold;
+    font-size: 16px;
+    transition: ease 0.3s;
+}
+
+.error button:hover {
+    cursor: pointer;
+    background-color: #505050;
+}
+
+@media (max-width: 1300px) {
+    .error img {
+        width: 50%;
+    }
+
+    .botaoRedirecionar {
+        width: 180px;
+    }
+}
+
+@media (max-width: 900px) {
+    .error img {
+        width: 65%;
+    }
+}
+
+@media (max-width: 650px) {
+    .error {
+        width: 100%;
+    }
+
+    .error img {
+        width: 80%;
+    }
+
+    .error h1 {
+        font-size: 31px;
+    }
+}
+
+@media (max-width: 600px) {
+    .error {
+        padding: 35px 30px;
+    }
+}
+
+@media (max-width: 500px) {
+    .error img {
+        width: 100%;
+    }
+
+    .error div {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 380px) {
+    .error {
+        padding: 25px 20px;
+    }
+}

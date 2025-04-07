@@ -1,0 +1,36 @@
+header {
+    display: flex;
+    height: 70px;
+    width: 100%;
+}
+
+/* --------------------------------------- */
+
+.sectionHeader {
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.sectionHeader ul li {
+    font-size: 1.08em;
+    display: inline-flex;
+}
+
+.sectionHeader ul li a {
+    color: #fff;
+    text-decoration: none;
+    margin: 22px;
+    transition: 0.1s;
+}
+
+.sectionHeader ul li a:hover {
+    color: #8dcffb;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

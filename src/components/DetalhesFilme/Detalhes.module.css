@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Martian+Mono:wght@100..800&family=Reddit+Mono:wght@200..900&display=swap');
+
+/* ---------- */
+
+.detalhesFilme {
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    max-width: 1150px;
+    margin: 50px auto;
+    min-height: 600px;
+}
+
+.detalhesFilme img {
+    height: 570px;
+    border-radius: 10px;
+    margin-right: 50px;
+}
+
+.detalhesFilme p {
+    margin-bottom: 35px;
+    font-family: Inter, sans serif;
+    max-width: 700px;
+}
+
+.detalhesFilme h1 {
+    margin-top: 12px;
+    text-align: center;
+}
+
+.detalhesFilme h3 {
+    margin-bottom: 2px;
+}
+
+.detalhesFilme span {
+    margin: 2px 0px 30px 0px;
+    font-size: 16px;
+    font-family: Inter, sans serif;
+    text-align: center;
+    color: rgb(167, 167, 167);
+}
+
+.detalhesFilme svg {
+    font-size: 21.5px;
+    color: #F7d354;
+    margin-right: 7px;
+}
+
+.detalhesFilme div {
+    display: flex;
+    flex-direction: column;
+}
+
+.avaliacaoFilme {
+    color: #fff;
+    position: absolute;
+    font-size: 30px;
+    font-weight: 600;
+    padding: 12px 17px 12px 12px;
+    border-radius: 100%;
+    font-family: "Reddit Mono", monospace;
+    letter-spacing: -5px;
+    background: rgba(78, 78, 78, 0.637);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11.9px);
+    -webkit-backdrop-filter: blur(11.9px);
+    border: 1px solid #fff;
+    margin-left: -20px;
+    margin-top: -20px;
+}
+
+.imgFundo {
+    position: absolute;
+    z-index: -1;
+    filter: opacity(7%);
+    width: 100%;
+    height: auto;
+    -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%);
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%);
+    object-fit: cover;
+    max-width: 1150px;
+}
+
+/* ---------- */
+
+@media screen and (max-width: 1220px) {
+    .detalhesFilme {
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        max-width: 1150px;
+        margin: 50px auto;
+        min-height: 600px;
+    }
+
+    .detalhesFilme img {
+        height: auto;
+        width: 350px;
+        border-radius: 10px;
+        margin: auto;
+    }
+
+    .detalhesFilme div {
+        margin: 0px 15%;
+    }
+
+    .detalhesFilme p {
+        margin-bottom: 35px;
+        font-family: Inter, sans serif;
+        max-width: 100%;
+    }
+
+    .avaliacaoFilme {
+        display: flex;
+        align-self: center;
+        margin-left: -330px;
+        margin-top: -20px;
+    }
+
+    .imgFundo {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .detalhesFilme img {
+        height: auto;
+        width: 300px;
+        border-radius: 10px;
+        margin: auto;
+    }
+
+    .detalhesFilme div {
+        margin: 0px 10%;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .detalhesFilme img {
+        height: auto;
+        width: 230px;
+        border-radius: 10px;
+        margin: auto;
+    }
+    .detalhesFilme p {
+        margin-bottom: 25px;
+        font-size: 15px;
+        font-family: Inter, sans serif;
+        max-width: 700px;
+    }
+
+    .detalhesFilme h1 {
+        margin-top: 12px;
+        font-size: 26px;
+        text-align: center;
+    }
+
+    .detalhesFilme h3 {
+        font-size: 17px;
+        margin-bottom: 2px;
+    }
+
+    .detalhesFilme span {
+        margin-bottom: 40px;
+    }
+
+    .detalhesFilme svg {
+        font-size: 19px;
+    }
+
+    .avaliacaoFilme {
+        display: flex;
+        font-size: 25px;
+        padding: 12px 17px 12px 12px;
+        align-self: center;
+        margin-left: -220px;
+        margin-top: -15px;
+    }
+
+}
