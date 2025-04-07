@@ -1,4 +1,5 @@
 import Hello from "../components/Hello/Hello";
+import MeusProjetos from "../components/MeusProjetos/MeusProjetos";
 import SobreMim from "../components/SobreMim/SobreMim";
 
 function Home() {
@@ -6,6 +7,7 @@ function Home() {
     <>
       <Hello />
       <SobreMim />
+      <MeusProjetos />
     </>
   );
 }

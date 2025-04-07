@@ -1,0 +1,54 @@
+.sectionTipos {
+    height: 460px;
+    border: solid #21262d 1px;
+}
+
+
+.sectionTipos p {
+    font-size: 28px;
+    line-height: 150%;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.sectionTipos a {
+    width: 425px;
+    height: 100%;
+    border-right: solid #21262d 1px;
+    padding: 40px 48px;
+    margin: 0;
+    text-decoration: none;
+    transition: ease 0.4s;
+}
+
+.sectionTipos div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sectionTipos h4 {
+    font-size: 20px;
+    color: transparent;
+    margin-bottom: 20px;
+    transform: translateY(20px);
+    transition: ease 0.4s;
+}
+
+.sectionTipos a:hover {
+    background: #01000544;
+}
+
+.sectionTipos a:hover h4 {
+    color: #fff;
+    transform: translateY(0px);
+}
+
+.subtitulo {
+    font-size: 5em;
+    color: #fff;
+    text-align: center;
+    /* border-top: solid 0.5px #a488e23d; */
+}

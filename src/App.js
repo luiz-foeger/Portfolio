@@ -8,7 +8,6 @@ import NaoEncontrada from './components/NaoEncontrada/NaoEncontrada';
 // Importação das páginas
 import Home from './paginas/home';
 import PaginaLancamentos from './paginas/lancamentos';
-import PaginaRecomendados from './paginas/recomendados';
 import PaginaDetalhes from './paginas/detalhes';
 
 import './App.css';
