@@ -1,23 +1,23 @@
 import React, { useState, useRef, useEffect } from 'react';
-import estilos from './LandingPages.module.css';
+import estilos from '../LandingPages/LandingPages.module.css';
 import { FaAngleRight, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const projetos = [
     {
-        titulo: 'EA SPORTS FC™ 24',
-        tecnologias: 'JavaScript, HTML, CSS',
-        link: 'https://ea-sports-fc.vercel.app',
-        imagem: '/img/preview/projeto-1.png',
+        titulo: 'CineDev',
+        tecnologias: 'JavaScript, Node.js, Fetch-Api',
+        link: 'https://cinedev-project.vercel.app',
+        imagem: '/img/preview/projeto-2.png',
     },
     {
-        titulo: 'Academia Equilíbrio',
-        tecnologias: 'JavaScript, HTML, CSS',
-        link: 'https://academia-equilibrio.vercel.app/',
-        imagem: '/img/preview/projeto-4.png',
+        titulo: 'CineDev',
+        tecnologias: 'JavaScript, Node.js, Fetch-Api',
+        link: 'https://cinedev-project.vercel.app',
+        imagem: '/img/preview/projeto-2.png',
     },
 ];
 
-const PageLandingPages = () => {
+const PageCatalogos = () => {
     const [indiceAtual, setIndiceAtual] = useState(0);
     const carouselRef = useRef(null);
 
@@ -42,7 +42,7 @@ const PageLandingPages = () => {
 
     return (
         <>
-            <h1 style={{ marginTop: '80px' }} className={estilos.subtitulo}>Landing Pages</h1>
+            <h1 style={{ marginTop: '80px' }} className={estilos.subtitulo}>Catálogos</h1>
             <section className={estilos.sectionProjetos}>
 
                 <section className={estilos.carousel}>
@@ -102,4 +102,4 @@ const PageLandingPages = () => {
     );
 };
 
-export default PageLandingPages;
+export default PageCatalogos;

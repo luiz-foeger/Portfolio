@@ -7,9 +7,11 @@ import Footer from './components/Footer/Footer';
 // Importação das páginas
 import Home from './paginas/home';
 import NaoEncontrada from './components/NaoEncontrada/NaoEncontrada';
+import PageLandingPages from './components/LandingPages/LandingPages';
+import PageCatalogos from './components/Catalogos/Catalogos';
+import PageEcommerce from './components/Ecommerce/Ecommerce';
 
 import './App.css';
-import PageLandingPages from './components/LandingPages/LandingPages';
 
 function App() {
   return (
@@ -18,7 +20,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projetos/landing-pages" element={<PageLandingPages />} />
-
+        <Route path="/projetos/catalogos" element={<PageCatalogos />} />
+        <Route path="/projetos/e-commerce" element={<PageEcommerce />} />
         <Route path="/*" element={<NaoEncontrada />} />
       </Routes>
       
