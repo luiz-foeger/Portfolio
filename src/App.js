@@ -3,14 +3,13 @@ import { Route, Routes } from 'react-router-dom';
 // Importação dos componentes
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import NaoEncontrada from './components/NaoEncontrada/NaoEncontrada';
 
 // Importação das páginas
 import Home from './paginas/home';
-import PaginaLancamentos from './paginas/lancamentos';
-import PaginaDetalhes from './paginas/detalhes';
+import NaoEncontrada from './components/NaoEncontrada/NaoEncontrada';
 
 import './App.css';
+import PageLandingPages from './components/LandingPages/LandingPages';
 
 function App() {
   return (
@@ -18,10 +17,8 @@ function App() {
       <Header />      
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/lancamentos" element={<PaginaLancamentos />} />
-        <Route path="/populares" element={<PaginaPopulares />} />
-        <Route path="/recomendados" element={<PaginaRecomendados />} />
-        <Route path="/detalhes/:id" element={<PaginaDetalhes />} /> */}
+        <Route path="/projetos/landing-pages" element={<PageLandingPages />} />
+
         <Route path="/*" element={<NaoEncontrada />} />
       </Routes>
       

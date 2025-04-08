@@ -1,4 +1,6 @@
 import React from 'react'
+import Icones from '../Icones/Icones';
+
 import estilos from './SobreMim.module.css';
 
 const SobreMim = () => {
@@ -24,6 +26,8 @@ const SobreMim = () => {
                         Experiência do Usuário, proporcionando uma experiência digital divertida e envolvente.
                     </p>
                 </article>
+                <Icones />
+
             </section>
         </>
     )
