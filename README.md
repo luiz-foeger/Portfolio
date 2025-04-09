@@ -1,25 +1,13 @@
 
-<h1 align="center">CineDev</h1>
-Este projeto foi desenvolvido como parte do trabalho final do 3º período de Tecnologia em Sistemas para Internet (TSI), com o objetivo de aprimorar habilidades no desenvolvimento de aplicações interativas utilizando NodeJs, React e Fetch API's.
+<h1 align="center">Luiz Föeger - Portfólio</h1>
+Este portfólio reúne projetos desenvolvidos com foco em aprimorar minhas competências técnicas e criativas nas áreas de Design e Desenvolvimento Web. Através deles, demonstro minhas experiências com ferramentas modernas de programação como HTML, CSS, JavaScript, Node, React, boas práticas de UI/UX, e atenção à performance e acessibilidade.
 
 <br>
 <br>
 <h2>🚀 Demonstração</h2>
 
-Acesse o projeto aqui: 🔗 [CineDev - Catálogo de Filmes](https://cinedev-project.vercel.app)
-
+Acesse o Portfólio aqui: 🔗 [Portfólio - Luiz Felipe Föeger dos Santos](https://luizfoeger.vercel.app/)
 <br>
-<h2>👨‍💻 Comandos</h2>
-
-Instalação das dependências:
-
-        npm install
-
-Inicialização: [http://localhost:3000](http://localhost:3000)
-
-        npm start
-
-
 <br>
 <h2>🛠 Tecnologias Utilizadas</h2>
 <div>
