@@ -11,7 +11,7 @@ const MeusProjetos = () => {
                 <h1 id="section-projetos" className={estilos.subtitulo}>Meus Projetos</h1><br />
                 <section className={estilos.sectionTipos}>
                     <Link to="/projetos/landing-pages" id="tipo-1" style={{ borderLeft: '1px solid #21262d' }}>
-                        <div>
+                        <div style={{ backgroundImage: 'url(/img/preview/fundo1.png)'}}>
                             <p>Landing Pages</p>
                             <h4>
                                 Ver projetos <FontAwesomeIcon icon={faAngleRight} />
@@ -20,7 +20,7 @@ const MeusProjetos = () => {
                     </Link>
 
                     <Link to="/projetos/catalogos" id="tipo-2">
-                        <div>
+                        <div style={{ backgroundImage: 'url(/img/preview/fundo2.png)' }}>
                             <p>Catálogos</p>
                             <h4>
                                 Ver projetos <FontAwesomeIcon icon={faAngleRight} />
@@ -29,7 +29,7 @@ const MeusProjetos = () => {
                     </Link>
 
                     <Link to="/projetos/e-commerce" id="tipo-3">
-                        <div>
+                        <div style={{ backgroundImage: 'url(/img/preview/fundo3.png)'}}>
                             <p>E-commerce</p>
                             <h4>
                                 Ver projetos <FontAwesomeIcon icon={faAngleRight} />

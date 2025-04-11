@@ -5,18 +5,20 @@
 
 
 .sectionTipos p {
-    font-size: 28px;
+    font-size: 31px;
     line-height: 150%;
     color: #fff;
     margin-bottom: 20px;
     font-weight: bold;
+    margin: 40px 48px;
+    ;
 }
 
 .sectionTipos a {
     width: 425px;
     height: 100%;
     border-right: solid #21262d 1px;
-    padding: 40px 48px;
+    /* margin: 40px 48px; */
     margin: 0;
     text-decoration: none;
     transition: ease 0.4s;
@@ -27,24 +29,39 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-size: cover;
+    background-position: center;
 }
 
 .sectionTipos h4 {
-    font-size: 20px;
+    font-size: 24px;
     color: transparent;
     margin-bottom: 20px;
     transform: translateY(20px);
     transition: ease 0.4s;
+    margin: 40px 48px;
+    ;
 }
 
 .sectionTipos a:hover {
     background: #01000544;
+    filter: grayscale(0%);
 }
 
 .sectionTipos a:hover h4 {
     color: #fff;
     transform: translateY(0px);
 }
+
+/* .sectionTipos a:hover p {
+    font-size: 35px;
+    transition: ease-in-out 0.3s;
+}
+
+.sectionTipos a:not(:hover) p {
+    font-size: 28px;
+    transition: ease-in-out 0.3s;
+} */
 
 .subtitulo {
     font-size: 5em;
