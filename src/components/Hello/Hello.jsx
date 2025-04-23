@@ -5,10 +5,10 @@ import { FaSquareGithub, FaLinkedin, FaSquareBehance, FaSquareEnvelope } from 'r
 function Hello() {
   useEffect(() => {
     const titulos = [
-      "— Desenvolvedor Front-End —",
-      "— Designer Gráfico —",
-      "— Desenvolvedor Back-End —",
-      "— Web Designer —"
+      "{ Desenvolvedor Front-End }",
+      "{ Designer Gráfico }",
+      "{ Desenvolvedor Back-End }",
+      "{ Web Designer }"
     ];
     let indiceAtual = 0;
 
@@ -70,7 +70,7 @@ function Hello() {
       <div>
         <h2>Olá, Bem vindo! ☕</h2>
         <h1>Me chamo <strong>L</strong>uiz <strong>F</strong>elipe</h1>
-        <h3 className={estilos.colorido} id="titulo">— Web Designer —</h3>
+        <h3 className={estilos.colorido} id="titulo">&#123; Web Designer &#125;</h3>
       </div>
 
       <section className={estilos.links}>

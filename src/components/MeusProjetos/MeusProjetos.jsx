@@ -1,45 +1,117 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from 'react';
 import estilos from './MeusProjetos.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { FaAngleRight, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+
+const projetos = [
+    {
+        titulo: 'CineDev',
+        tecnologias: 'Catálogo',
+        link: 'https://cinedev-project.vercel.app',
+        imagem: '/img/preview/projeto-2.png',
+    },
+    {
+        titulo: 'EA SPORTS FC™ 24',
+        tecnologias: 'Landing Page',
+        link: 'https://ea-sports-fc.vercel.app',
+        imagem: '/img/preview/projeto-1.png',
+    },
+    {
+        titulo: 'Academia Equilíbrio',
+        tecnologias: 'Landing Page',
+        link: 'https://academia-equilibrio.vercel.app/',
+        imagem: '/img/preview/projeto-4.png',
+    },
+    {
+        titulo: 'StreetWear',
+        tecnologias: 'Loja Online',
+        link: 'https://street-wear.vercel.app',
+        imagem: '/img/preview/projeto-3.png',
+    },
+];
 
 const MeusProjetos = () => {
+    const [indiceAtual, setIndiceAtual] = useState(0);
+    const carouselRef = useRef(null);
+
+    useEffect(() => {
+        const offset = -indiceAtual * 100;
+        if (carouselRef.current) {
+            carouselRef.current.style.transform = `translateX(${offset}%)`;
+        }
+    }, [indiceAtual]);
+
+    const proximo = () => {
+        setIndiceAtual((prevIndex) =>
+            prevIndex < projetos.length - 1 ? prevIndex + 1 : 0
+        );
+    };
+
+    const anterior = () => {
+        setIndiceAtual((prevIndex) =>
+            prevIndex > 0 ? prevIndex - 1 : projetos.length - 1
+        );
+    };
+
     return (
         <>
-            <>
-                <h1 id="section-projetos" className={estilos.subtitulo}>Meus Projetos</h1><br />
-                <section className={estilos.sectionTipos}>
-                    <Link to="/projetos/landing-pages" id="tipo-1" style={{ borderLeft: '1px solid #21262d' }}>
-                        <div style={{ backgroundImage: 'url(/img/preview/fundo1.png)'}}>
-                            <p>Landing Pages</p>
-                            <h4>
-                                Ver projetos <FontAwesomeIcon icon={faAngleRight} />
-                            </h4>
-                        </div>
-                    </Link>
+            <h1 style={{ marginTop: '80px' }} className={estilos.subtitulo}>Meus Projetos</h1>
+            <section className={estilos.sectionProjetos}>
 
-                    <Link to="/projetos/catalogos" id="tipo-2">
-                        <div style={{ backgroundImage: 'url(/img/preview/fundo2.png)' }}>
-                            <p>Catálogos</p>
-                            <h4>
-                                Ver projetos <FontAwesomeIcon icon={faAngleRight} />
-                            </h4>
-                        </div>
-                    </Link>
+                <section className={estilos.carousel}>
+                    <div
+                        className={estilos.carouselInner}
+                        ref={carouselRef}
+                        style={{
+                            display: 'flex',
+                            transition: 'transform 0.5s ease-in-out',
+                            width: `${projetos.length * 100}%`,
+                        }}
+                    >
+                        {projetos.map((projeto, index) => (
+                            <div
+                                key={index}
+                                className={estilos.carouselItem}
+                                style={{ width: '100%' }}
+                            >
+                                <h3>{projeto.titulo}</h3>
+                                <p>{projeto.tecnologias}</p>
+                                <a
+                                    href={projeto.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Visualizar <FaAngleRight />
+                                </a>
+                                <div className={estilos.divProjeto}>
+                                    <img
+                                        src="/img/laptop.png"
+                                        alt="Imagem de laptop"
+                                        className={estilos.laptop}
+                                    />
+                                    <div className={estilos.divImagem}>
+                                        <img
+                                            src={projeto.imagem}
+                                            alt={`Demonstração de ${projeto.titulo}`}
+                                            className={estilos.demoProjeto}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
 
-                    <Link to="/projetos/e-commerce" id="tipo-3">
-                        <div style={{ backgroundImage: 'url(/img/preview/fundo3.png)'}}>
-                            <p>E-commerce</p>
-                            <h4>
-                                Ver projetos <FontAwesomeIcon icon={faAngleRight} />
-                            </h4>
-                        </div>
-                    </Link>
+                    <div className={estilos.carouselButtons}>
+                        <button onClick={anterior}>
+                            <FaChevronLeft />
+                        </button>
+                        <button onClick={proximo}>
+                            <FaChevronRight />
+                        </button>
+                    </div>
                 </section>
-            </>
+            </section>
         </>
-    )
-}
+    );
+};
 
 export default MeusProjetos;
