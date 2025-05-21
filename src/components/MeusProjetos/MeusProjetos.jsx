@@ -18,14 +18,14 @@ const projetos = [
     {
         titulo: 'EA SPORTS FC™ 24',
         tecnologias: 'Landing Page',
-        link: 'https://res.cloudinary.com/dsmx8c5ug/image/upload/v1747846270/eb842b9e-e0e6-4253-a038-58952a1e1ed2.png',
-        imagem: '/img/preview/projeto-1.png',
+        link: 'https://ea-sports-fc.vercel.app',
+        imagem: 'https://res.cloudinary.com/dsmx8c5ug/image/upload/v1747846270/eb842b9e-e0e6-4253-a038-58952a1e1ed2.png',
     },
     {
         titulo: 'Academia Equilíbrio',
         tecnologias: 'Landing Page',
-        link: 'https://res.cloudinary.com/dsmx8c5ug/image/upload/v1747846279/2dec39bb-e83c-453b-a3d5-d53cd8e83a77.png',
-        imagem: '/img/preview/projeto-4.png',
+        link: 'https://academia-equilibrio.vercel.app',
+        imagem: 'https://res.cloudinary.com/dsmx8c5ug/image/upload/v1747846279/2dec39bb-e83c-453b-a3d5-d53cd8e83a77.png',
     },
 ];
 
