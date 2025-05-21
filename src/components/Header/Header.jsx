@@ -9,7 +9,7 @@ const Header = () => {
                 <ul>
                     <li><a href="">Introdução</a></li>
                     <li><a href="#sobre-mim">Sobre mim</a></li>
-                    <li><a href="#section-projetos">Meus projetos</a></li>
+                    <li><a href="#projetos">Meus projetos</a></li>
                 </ul>
             </section>
         </header>

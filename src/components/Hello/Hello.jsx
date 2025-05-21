@@ -96,7 +96,7 @@ function Hello() {
           <a target="_blank" rel="noopener noreferrer" href="mailto:foegerluiz@gmail.com">
             <FaSquareEnvelope className={estilos.icon} />
           </a>
-          <p>Email</p>
+          <p>E-mail</p>
         </div>
       </section>
     </section>

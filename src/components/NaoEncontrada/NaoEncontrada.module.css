@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     gap: 30px;
+    min-height: 80vh;
     color: #fff;
     padding: 20px;
     border-radius: 20px;
@@ -15,14 +16,11 @@
     display: flex;
 }
 
-.error img {    
-    width: 35%;
-}
-
 .error p {
     margin-top: 25px;
     max-width: 750px;
     font-size: 19px;
+    color: rgb(255, 255, 255);
 }
 
 .error h1 {

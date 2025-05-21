@@ -4,28 +4,28 @@ import { FaAngleRight, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const projetos = [
     {
+        titulo: 'Street&Wear',
+        tecnologias: 'Loja Online',
+        link: 'https://streetwear-project.vercel.app',
+        imagem: 'https://res.cloudinary.com/dsmx8c5ug/image/upload/v1747835368/d7dec3e9-968d-4bd9-ad1b-e31bd0042dd8.png',
+    },
+    {
         titulo: 'CineDev',
-        tecnologias: 'Catálogo',
+        tecnologias: 'Catálogo Online',
         link: 'https://cinedev-project.vercel.app',
-        imagem: '/img/preview/projeto-2.png',
+        imagem: 'https://res.cloudinary.com/dsmx8c5ug/image/upload/v1747835825/09bf52fc-277f-4396-a9c4-f7c765fcc8a4.png',
     },
     {
         titulo: 'EA SPORTS FC™ 24',
         tecnologias: 'Landing Page',
-        link: 'https://ea-sports-fc.vercel.app',
+        link: 'https://res.cloudinary.com/dsmx8c5ug/image/upload/v1747846270/eb842b9e-e0e6-4253-a038-58952a1e1ed2.png',
         imagem: '/img/preview/projeto-1.png',
     },
     {
         titulo: 'Academia Equilíbrio',
         tecnologias: 'Landing Page',
-        link: 'https://academia-equilibrio.vercel.app/',
+        link: 'https://res.cloudinary.com/dsmx8c5ug/image/upload/v1747846279/2dec39bb-e83c-453b-a3d5-d53cd8e83a77.png',
         imagem: '/img/preview/projeto-4.png',
-    },
-    {
-        titulo: 'StreetWear',
-        tecnologias: 'Loja Online',
-        link: 'https://street-wear.vercel.app',
-        imagem: '/img/preview/projeto-3.png',
     },
 ];
 
@@ -54,7 +54,7 @@ const MeusProjetos = () => {
 
     return (
         <>
-            <h1 style={{ marginTop: '80px' }} className={estilos.subtitulo}>Meus Projetos</h1>
+            <h1 id='projetos' style={{ marginTop: '80px' }} className={estilos.subtitulo}>Meus Projetos</h1>
             <section className={estilos.sectionProjetos}>
 
                 <section className={estilos.carousel}>
