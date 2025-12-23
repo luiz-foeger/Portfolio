@@ -62,7 +62,7 @@ const Header = () => {
                 animate={{
                     x: isShifted ? "-75%" : "-50%",
                     y: "-50%",
-                    scale: isScrolled ? 0.75 : 1,
+                    // scale: isScrolled ? 0.75 : 1,
                     opacity: isHidden ? 0 : 1
                 }}
                 transition={{
