@@ -1,0 +1,18 @@
+.sectionIntroducao {
+  opacity: 0;
+  animation: fadeInAnimation ease 2s forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.strongLetter {
+  font-family: "Mea Culpa", sans-serif;
+  font-weight: 500;
+}
+
+.iconWrapper:hover .icon {
+  transform: translateY(-10px);
+}
