@@ -1,80 +1,93 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
-import { motion } from 'framer-motion';
-import { AnimatedLogo } from '../AnimatedLogo';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { HiArrowDown } from 'react-icons/hi2';
+import { AnimatedLogoHeader } from '../AnimatedLogoHeader';
 
 const Header = () => {
-    const [isShifted, setIsShifted] = useState(false);
-    const [isScrolled, setIsScrolled] = useState(false);
+    const [hasScrolled, setHasScrolled] = useState(false);
     const [isHidden, setIsHidden] = useState(false);
-
     const [resetKey, setResetKey] = useState(0);
 
     useEffect(() => {
-        const handleVisibilityChange = () => {
-            if (document.visibilityState === 'visible') {
-                setResetKey(prev => prev + 1);
+        const handleScroll = () => {
+            const scrollY = window.scrollY;
+            // Reduzi para 10px para uma resposta quase instantânea ao toque do scroll
+            if (scrollY > 10 && !hasScrolled) {
+                setHasScrolled(true);
             }
         };
 
-        document.addEventListener("visibilitychange", handleVisibilityChange);
-        return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
-    }, []);
-
-    useEffect(() => {
-        setIsShifted(false);
-
-        const startLoop = setTimeout(() => {
-            setIsShifted(true);
-            const interval = setInterval(() => {
-                setIsShifted((prev) => !prev);
-            }, 5000);
-            return () => clearInterval(interval);
-        }, 4500);
-
-        return () => clearTimeout(startLoop);
-    }, [resetKey]);
-
-    useEffect(() => {
-        const handleScroll = () => setIsScrolled(window.scrollY > 50);
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [hasScrolled]);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
-            ([entry]) => setIsHidden(entry.isIntersecting),
-            { threshold: 0.1 }
+            ([entry]) => setIsHidden(entry.isIntersecting), { threshold: 0.1 }
         );
         const footerElement = document.querySelector('footer');
         if (footerElement) observer.observe(footerElement);
         return () => { if (footerElement) observer.unobserve(footerElement); };
     }, []);
 
+    const isIntroMode = !hasScrolled;
+
     return (
-        <header className="fixed top-0 left-0 w-full h-24 z-50 pointer-events-none">
+        <motion.header
+            initial={{ height: "100vh", backgroundColor: "rgb(10,10,10)" }}
+            animate={{
+                height: isIntroMode ? "100dvh" : "5rem",
+                backgroundColor: isIntroMode ? "rgb(10,10,10)" : "rgba(10,10,10,0)",
+                opacity: isHidden ? 0 : 1,
+                pointerEvents: isIntroMode ? "none" : "auto" 
+            }}
+            transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed top-0 left-0 w-full z-50 flex flex-col justify-center items-center overflow-visible"
+        >
+            
             <motion.div
                 key={resetKey}
-
-                className="absolute top-1/2 left-1/2 w-28 md:w-32 pointer-events-auto"
-                initial={{ x: "-50%", y: "-50%", scale: 1, opacity: 1 }}
+                className="relative flex justify-center items-center"
+                initial={{ scale: 3 }}
                 animate={{
-                    x: isShifted ? "-75%" : "-50%",
-                    y: "-50%",
-                    // scale: isScrolled ? 0.75 : 1,
-                    opacity: isHidden ? 0 : 1
+                    scale: isIntroMode ? 3 : 0.45, 
                 }}
-                transition={{
-                    type: "spring", stiffness: 60, damping: 20,
-                    opacity: { duration: 0.3 }
-                }}
+                transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
             >
-                <a href="#">
-                    <AnimatedLogo />
-                </a>
+                <button 
+                    onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
+                    className="block pointer-events-auto bg-transparent border-none p-0 cursor-pointer outline-none"
+                >
+                    <AnimatedLogoHeader />
+                </button>
             </motion.div>
-        </header>
+
+            <AnimatePresence>
+                {isIntroMode && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        // SAÍDA ULTRA RÁPIDA: Duração mínima para não quebrar a imersão
+                        exit={{ opacity: 0, transition: { duration: 0.1 } }}
+                        transition={{ delay: 0.8, duration: 0.6 }}
+                        className="absolute bottom-12 flex flex-col items-center gap-2 text-neutral-500"
+                    >
+                        <span className="text-xs uppercase tracking-[0.3em] font-light">
+                            Explore o Portfolio
+                        </span>
+                        <motion.div 
+                            animate={{ y: [0, 5, 0] }}
+                            transition={{ repeat: Infinity, duration: 2 }}
+                        >
+                            <HiArrowDown size={20} />
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+        </motion.header>
     );
 };
 

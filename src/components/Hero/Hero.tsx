@@ -105,7 +105,7 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-neutral-600 opacity-70">
+      <div className="absolute bottom-8 left-1-translate-x-1/2 animate-bounce text-neutral-600 opacity-70">
         <HiArrowDown size={24} />
       </div>
 

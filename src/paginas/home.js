@@ -6,7 +6,11 @@ function Home() {
   return (
     <>
       <Hero />
-      {/* <SobreMim /> */}
+      <SobreMim />
+      <SobreMim />
+      <SobreMim />
+      <SobreMim />
+      <SobreMim />
       {/* <MeusProjetos /> */}
     </>
   );

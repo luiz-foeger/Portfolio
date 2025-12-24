@@ -3,7 +3,7 @@
 import { motion, Variants, Transition, useAnimationControls, useInView } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 
-export const AnimatedLogo: React.FC = () => { // useAnimatedLogo = () => {
+export const AnimatedLogoFooter: React.FC = () => { // useAnimatedLogo = () => {
     const controls = useAnimationControls();
     const ref = useRef(null);
     const isInView = useInView(ref, { amount: 0.5, once: true });

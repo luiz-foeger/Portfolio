@@ -1,7 +1,7 @@
 'use client';
 
 import { FaInstagram, FaLinkedin, FaGithub, FaWhatsapp, FaBehance } from 'react-icons/fa';
-import { AnimatedLogo } from '../AnimatedLogo';
+import { AnimatedLogoFooter } from '../AnimatedLogoFooter';
 
 interface LinkItem { label: string; href: string; }
 interface SocialItem { icon: React.ElementType; href: string; label: string; }
@@ -40,7 +40,7 @@ export default function Footer() {
           <div className="flex flex-col items-start gap-8 md:gap-14"> {/* Gap menor no mobile */}
 
             <div className="w-64 md:w-[340px]">
-              <AnimatedLogo />
+              <AnimatedLogoFooter />
             </div>
 
             <p className="text-sm leading-relaxed max-w-xs">
