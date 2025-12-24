@@ -6,8 +6,8 @@ function Home() {
   return (
     <>
       <Hero />
-      <SobreMim />
-      <MeusProjetos />
+      {/* <SobreMim /> */}
+      {/* <MeusProjetos /> */}
     </>
   );
 }
