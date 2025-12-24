@@ -7,7 +7,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Lexend', 'sans-serif'],
+        'mea-culpa': ['"Mea Culpa"', 'cursive'],
+        sans: ['"Lexend"', 'sans-serif'],
       },
     },
   },

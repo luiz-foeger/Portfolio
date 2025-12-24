@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { InfiniteLogo } from '../InfiniteLogo';
+import { AnimatedLogo } from '../AnimatedLogo';
 
 const Header = () => {
     const [isShifted, setIsShifted] = useState(false);
@@ -71,7 +71,7 @@ const Header = () => {
                 }}
             >
                 <a href="#">
-                    <InfiniteLogo />
+                    <AnimatedLogo />
                 </a>
             </motion.div>
         </header>

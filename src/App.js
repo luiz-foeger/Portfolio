@@ -6,7 +6,7 @@ import Footer from './components/Footer/Footer';
 
 // Importação das páginas
 import Home from './paginas/home';
-import NaoEncontrada from './components/NaoEncontrada/NaoEncontrada';
+import NotFound from './components/NaoEncontrada/NotFound';
 import PageLandingPages from './components/LandingPages/LandingPages';
 import PageCatalogos from './components/Catalogos/Catalogos';
 import PageEcommerce from './components/Ecommerce/Ecommerce';
@@ -22,7 +22,7 @@ function App() {
         <Route path="/projetos/landing-pages" element={<PageLandingPages />} />
         <Route path="/projetos/catalogos" element={<PageCatalogos />} />
         <Route path="/projetos/e-commerce" element={<PageEcommerce />} />
-        <Route path="/*" element={<NaoEncontrada />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
       
       <Footer />

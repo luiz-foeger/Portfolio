@@ -1,7 +1,7 @@
 'use client';
 
 import { FaInstagram, FaLinkedin, FaGithub, FaWhatsapp, FaBehance } from 'react-icons/fa';
-import { InfiniteLogo } from '../InfiniteLogo';
+import { AnimatedLogo } from '../AnimatedLogo';
 
 interface LinkItem { label: string; href: string; }
 interface SocialItem { icon: React.ElementType; href: string; label: string; }
@@ -35,12 +35,12 @@ export default function Footer() {
     <footer className="bg-neutral-950 text-neutral-400 border-t border-neutral-800 font-sans">
       <div className="max-w-7xl mx-auto px-6 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.6fr_0.7fr_0.7fr_0.7fr] gap-12 mb-12">
-          
+
           {/* COLUNA 1: Informações */}
           <div className="flex flex-col items-start gap-8 md:gap-14"> {/* Gap menor no mobile */}
 
-            <div className="w-64 md:w-[340px]"> 
-               <InfiniteLogo />
+            <div className="w-64 md:w-[340px]">
+              <AnimatedLogo />
             </div>
 
             <p className="text-sm leading-relaxed max-w-xs">

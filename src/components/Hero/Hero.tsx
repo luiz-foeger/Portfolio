@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
   ];
 
   return (
-    <section className={`h-screen flex flex-col justify-center items-center text-center bg-cover bg-center ${estilos.sectionIntroducao}`}>
+    <section className={`min-h-screen py-20 flex flex-col justify-center items-center text-center bg-cover bg-center ${estilos.sectionIntroducao}`}>
       <div className="mb-8 px-4">
         <h2 className="text-3xl md:text-5xl text-white my-4">Olá, Bem vindo! ☕</h2>
 

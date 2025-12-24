@@ -3,7 +3,7 @@ import estilos from "./NaoEncontrada.module.css";
 // import react icon de seta para voltar
 import { FaArrowLeft } from "react-icons/fa";
 
-const NaoEncontrada = () => {
+const NotFound = () => {
   return (
     <div className={estilos.error}>
       <h1 style={{ fontSize: "80px" }}>404</h1>
@@ -14,4 +14,4 @@ const NaoEncontrada = () => {
   );
 };
 
-export default NaoEncontrada;
+export default NotFound;
