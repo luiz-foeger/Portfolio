@@ -7,10 +7,6 @@ function Home() {
     <>
       <Hero />
       <SobreMim />
-      <SobreMim />
-      <SobreMim />
-      <SobreMim />
-      <SobreMim />
       {/* <MeusProjetos /> */}
     </>
   );
