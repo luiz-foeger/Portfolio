@@ -44,3 +44,19 @@ body {
 div {
     box-sizing: border-box;
 }
+
+/* * {
+  cursor: none !important;
+} */
+
+/* IMPORTANTE: Em celulares/tablets não existe cursor, 
+   então vamos garantir que seu custom cursor não atrapalhe */
+@media (hover: none) and (pointer: coarse) {
+    .custom-cursor {
+        display: none;
+    }
+
+    * {
+        cursor: auto !important;
+    }
+}
