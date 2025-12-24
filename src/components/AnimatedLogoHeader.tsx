@@ -10,52 +10,34 @@ export const AnimatedLogoHeader: React.FC = () => {
 
     useEffect(() => {
         let isMounted = true;
-
         const sequence = async () => {
-            // Pequeno delay para garantir a montagem
             await new Promise(resolve => setTimeout(resolve, 100));
             if (!isMounted) return;
 
             if (isInView) {
                 try {
-                    // 1. Estado Inicial (Logo Quadrada caindo)
                     await controls.start("stacked_fall");
-
                     while (isMounted) {
-                        // 2. TIMING: Espera 4.5s (Igual ao seu Header antigo)
                         await new Promise(resolve => setTimeout(resolve, 4500));
                         if (!isMounted) break;
-
-                        // 3. SLIDE + LINE (Vira Linha e desliza para posição)
                         await controls.start("inline_reorganize");
-
-                        // 4. TIMING: Espera 5s lendo a linha
                         await new Promise(resolve => setTimeout(resolve, 5000));
                         if (!isMounted) break;
-
-                        // 5. SLIDE + SQUARE (Vira Quadrado e desliza de volta)
                         await controls.start("stacked_reorganize");
                     }
-                } catch (error) {
-                    // Ignora interrupções normais
-                }
+                } catch (error) { }
             }
         };
-
         sequence();
-
-        return () => {
-            isMounted = false;
-            controls.stop();
-        };
+        return () => { isMounted = false; controls.stop(); };
     }, [controls, isInView]);
 
+    // --- TRANSIÇÕES ORIGINAIS RESTAURADAS ---
     const fallBounce: Transition = { type: "spring", stiffness: 120, damping: 14, mass: 1 };
     const jellyLand: Transition = { type: "spring", stiffness: 160, damping: 10, mass: 0.8 };
     const dotBounce: Transition = { type: "spring", stiffness: 180, damping: 8, mass: 0.5 };
 
-    // --- COORDENADAS ORIGINAIS E LIMPAS (NÃO MEXI AQUI) ---
-  const movements = {
+    const movements = {
         f: { x: -110, y: 260, rotate: 2 },
         oBody: { x: -105, y: 260, rotate: -2 },
         oDotL: { x: -105, y: 260, rotate: 2 },
@@ -73,7 +55,6 @@ export const AnimatedLogoHeader: React.FC = () => {
         'dot': 0.4, 'oDotL': 0.5, 'oDotR': 0.55
     };
 
-    // Variantes individuais das letras (Apenas posição relativa)
     const createStoneVariant = (letterId: keyof typeof movements, isDot = false): Variants => {
         const target = movements[letterId];
         const myDelay = delayMap[letterId] || 0.1;
@@ -82,7 +63,10 @@ export const AnimatedLogoHeader: React.FC = () => {
 
         return {
             hidden: { y: -1200, x: 0, rotate: 0, opacity: 0, scale: 0.5 },
-            stacked_fall: { ...stackedState, transition: { ...fallBounce, delay: myDelay * 0.4 } },
+            stacked_fall: {
+                ...stackedState,
+                transition: { ...fallBounce, delay: myDelay * 0.4 }
+            },
             inline_reorganize: {
                 x: target.x, y: target.y, rotate: target.rotate, scale: 1,
                 transition: { ...transitionType, delay: myDelay }
@@ -94,37 +78,16 @@ export const AnimatedLogoHeader: React.FC = () => {
         };
     };
 
-    // --- NOVA VARIANTE DO GRUPO (AQUI ESTÁ O SLIDE) ---
-    // Movemos o grupo inteiro, sem quebrar as letras dentro.
     const groupSlideVariants: Variants = {
-        hidden: { x: 450 }, // Começa deslocado para a direita (centraliza o quadrado)
-        stacked_fall: { 
-            x: 450, // Mantém deslocado para a direita
-            transition: { duration: 0.5 } 
-        },
-        inline_reorganize: { 
-            x: 0, // Desliza para 0 (Esquerda) quando vira linha
-            transition: { ...jellyLand, delay: 0 } // Sincronizado
-        },
-        stacked_reorganize: { 
-            x: 450, // Desliza de volta para a direita quando vira quadrado
-            transition: { ...jellyLand, delay: 0.5 } 
-        }
+        hidden: { x: 450 },
+        stacked_fall: { x: 450, transition: { duration: 0.5 } },
+        inline_reorganize: { x: 0, transition: { ...jellyLand, delay: 0 } },
+        stacked_reorganize: { x: 450, transition: { ...jellyLand, delay: 0.5 } }
     };
 
     return (
         <div ref={ref} className="w-full flex justify-center items-center overflow-visible">
-            <motion.svg
-                viewBox="-800 85 3800 1200"
-                className="w-full text-white overflow-visible"
-                fill="none"
-                initial="hidden"
-                animate={controls}
-            >
-                {/* AGRUPAMENTO MÁGICO:
-                    Envolvemos tudo num <motion.g> e aplicamos o slide nele.
-                    As letras dentro seguem a vida delas normalmente.
-                */}
+            <motion.svg viewBox="-800 85 3800 1200" className="w-full text-white overflow-visible" fill="none" initial="hidden" animate={controls}>
                 <motion.g variants={groupSlideVariants}>
                     <motion.path id="letter-f" fill="currentColor" variants={createStoneVariant('f')} d="M0.52832 94.6189L44.5283 735.119L278.528 648.619L232.028 435.619L394.528 413.119L363.028 267.119L205.528 312.619L185.528 233.119L431.028 214.119L424.528 0.618896L0.52832 94.6189Z" />
                     <motion.path id="letter-o-body" fill="currentColor" variants={createStoneVariant('oBody')} fillRule="evenodd" clipRule="evenodd" d="M386.528 589.619L435.528 299.619L689.028 249.119L770.028 368.619L755.028 636.619L478.528 694.619L386.528 589.619ZM547.028 379.619L523.528 538.119L645.028 551.619L635.028 386.119L547.028 379.619Z" />

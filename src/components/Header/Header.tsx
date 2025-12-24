@@ -8,85 +8,66 @@ import { AnimatedLogoHeader } from '../AnimatedLogoHeader';
 const Header = () => {
     const [hasScrolled, setHasScrolled] = useState(false);
     const [isHidden, setIsHidden] = useState(false);
-    const [resetKey, setResetKey] = useState(0);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
+        setIsMobile(window.innerWidth < 768);
         const handleScroll = () => {
-            const scrollY = window.scrollY;
-            // Reduzi para 10px para uma resposta quase instantânea ao toque do scroll
-            if (scrollY > 10 && !hasScrolled) {
-                setHasScrolled(true);
-            }
+            if (window.scrollY > 15 && !hasScrolled) setHasScrolled(true);
         };
-
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, [hasScrolled]);
 
+    // CORREÇÃO DO ERRO DE SINTAXE (FECHAMENTO DE PARENTESES)
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => setIsHidden(entry.isIntersecting), { threshold: 0.1 }
-        );
-        const footerElement = document.querySelector('footer');
-        if (footerElement) observer.observe(footerElement);
-        return () => { if (footerElement) observer.unobserve(footerElement); };
+        const observer = new IntersectionObserver(([entry]) => {
+            setIsHidden(entry.isIntersecting);
+        }, { threshold: 0.1 });
+
+        const footer = document.querySelector('footer');
+        if (footer) observer.observe(footer);
+        
+        return () => {
+            if (footer) observer.unobserve(footer);
+        };
     }, []);
 
-    const isIntroMode = !hasScrolled;
+    const isIntro = !hasScrolled;
 
     return (
         <motion.header
             initial={{ height: "100vh", backgroundColor: "rgb(10,10,10)" }}
             animate={{
-                height: isIntroMode ? "100dvh" : "5rem",
-                backgroundColor: isIntroMode ? "rgb(10,10,10)" : "rgba(10,10,10,0)",
+                height: isIntro ? "100dvh" : "5.5rem",
+                backgroundColor: isIntro ? "rgb(10,10,10)" : "rgba(10,10,10,0)",
                 opacity: isHidden ? 0 : 1,
-                pointerEvents: isIntroMode ? "none" : "auto" 
+                pointerEvents: isIntro ? "none" : "auto" 
             }}
             transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
             className="fixed top-0 left-0 w-full z-50 flex flex-col justify-center items-center overflow-visible"
         >
-            
             <motion.div
-                key={resetKey}
                 className="relative flex justify-center items-center"
-                initial={{ scale: 3 }}
-                animate={{
-                    scale: isIntroMode ? 3 : 0.45, 
-                }}
+                initial={{ scale: isMobile ? 1.5 : 3 }}
+                animate={{ scale: isIntro ? (isMobile ? 1.5 : 3) : 0.45 }}
                 transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
             >
-                <button 
-                    onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
-                    className="block pointer-events-auto bg-transparent border-none p-0 cursor-pointer outline-none"
-                >
+                <button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="block pointer-events-auto bg-transparent border-none p-0 cursor-pointer outline-none">
                     <AnimatedLogoHeader />
                 </button>
             </motion.div>
 
             <AnimatePresence>
-                {isIntroMode && (
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        // SAÍDA ULTRA RÁPIDA: Duração mínima para não quebrar a imersão
-                        exit={{ opacity: 0, transition: { duration: 0.1 } }}
-                        transition={{ delay: 0.8, duration: 0.6 }}
-                        className="absolute bottom-12 flex flex-col items-center gap-2 text-neutral-500"
-                    >
-                        <span className="text-xs uppercase tracking-[0.3em] font-light">
-                            Explore o Portfolio
-                        </span>
-                        <motion.div 
-                            animate={{ y: [0, 5, 0] }}
-                            transition={{ repeat: Infinity, duration: 2 }}
-                        >
+                {isIntro && (
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, transition: { duration: 0.1 } }} transition={{ delay: 0.8, duration: 0.6 }} className="absolute bottom-12 flex flex-col items-center gap-2 text-neutral-500">
+                        <span className="text-xs uppercase tracking-[0.3em] font-light">Explore o Portfolio</span>
+                        <motion.div animate={{ y: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 2 }}>
                             <HiArrowDown size={20} />
                         </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>
-
         </motion.header>
     );
 };
