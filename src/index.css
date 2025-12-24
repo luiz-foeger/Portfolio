@@ -8,6 +8,7 @@
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
@@ -19,6 +20,13 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    background-color: rgb(16, 23, 28) !important;
+    color: #fff;
+    overscroll-behavior-y: none;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -26,11 +34,13 @@ html {
 body {
     font-family: "Lexend", sans-serif;
     font-weight: 400;
-    background-color: #010005;
-    background: rgb(16, 23, 28);
     background: radial-gradient(circle, rgba(16, 23, 28, 1) 0%, rgba(5, 8, 10, 1) 100%);
     animation: fadeInAnimation ease 2s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     height: 100vh;
+}
+
+div {
+    box-sizing: border-box;
 }
