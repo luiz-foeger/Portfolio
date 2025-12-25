@@ -38,10 +38,12 @@ const Hero: React.FC = () => {
   ];
 
   return (
-    <section className={`relative min-h-screen py-20 flex flex-col justify-center items-center text-center bg-neutral-950 overflow-hidden ${estilos.sectionIntroducao}`}>
+    // <section className={`relative min-h-screen py-20 flex flex-col justify-center items-center text-center bg-neutral-950 overflow-hidden ${estilos.sectionIntroducao}`}>
+    <section className={`relative min-h-screen py-20 flex flex-col justify-center items-center text-center overflow-hidden ${estilos.sectionIntroducao}`}>
 
       {/* background effect */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
+      {/* <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" /> */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[120px] pointer-events-none" />
 
       <div className="z-10 flex flex-col items-center px-4 w-full max-w-7xl">
 
