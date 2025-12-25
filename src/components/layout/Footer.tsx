@@ -1,7 +1,7 @@
 'use client';
 
 import { FaInstagram, FaLinkedin, FaGithub, FaWhatsapp, FaBehance } from 'react-icons/fa';
-import { AnimatedLogoFooter } from '../AnimatedLogoFooter';
+import { AnimatedLogoFooter } from '../ui/AnimatedLogoFooter';
 
 interface LinkItem { label: string; href: string; }
 interface SocialItem { icon: React.ElementType; href: string; label: string; }

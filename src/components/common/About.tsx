@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import Icones from '../Icones/Icones';
+import Icones from '../ui/Icones';
 
-const SobreMim = () => {
+const About = () => {
     return (
         <section
             id="sobre-mim"
@@ -79,4 +79,4 @@ const SobreMim = () => {
     );
 };
 
-export default SobreMim;
+export default About;

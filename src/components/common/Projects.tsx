@@ -133,7 +133,7 @@ const Card = ({
 };
 
 // --- COMPONENTE PRINCIPAL ---
-const Projetos = () => {
+const Projects = () => {
     const container = useRef(null);
     const { scrollYProgress } = useScroll({
         target: container,
@@ -180,4 +180,4 @@ const Projetos = () => {
     );
 };
 
-export default Projetos;
+export default Projects;

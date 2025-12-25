@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiArrowDown } from 'react-icons/hi2';
-import { AnimatedLogoHeader } from '../AnimatedLogoHeader';
+import { AnimatedLogoHeader } from '../ui/AnimatedLogoHeader';
 
 const Header = () => {
     const [hasScrolled, setHasScrolled] = useState(false);
