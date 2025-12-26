@@ -1,25 +1,36 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 export default function Cursor() {
-  // Tamanho da bolinha (px)
   const CURSOR_SIZE = 20;
 
-  // Variáveis de movimento do Framer Motion
+  // Estado para controlar a opacidade (evita flash inicial)
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Inicializamos com 0, mas vamos ajustar no useEffect para o topo central
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  // Efeito de "Mola" (Spring) para o cursor não seguir o mouse secamente,
-  // mas ter um leve atraso elegante (física).
+  // Configuração da física da mola
   const smoothOptions = { damping: 20, stiffness: 300, mass: 0.5 };
   const smoothX = useSpring(mouseX, smoothOptions);
   const smoothY = useSpring(mouseY, smoothOptions);
 
   useEffect(() => {
+    // 1. Definir Posição Inicial: Topo Central (fora da tela)
+    // Assim que o componente monta, definimos X no meio e Y um pouco acima do topo (-100)
+    if (typeof window !== 'undefined') {
+      mouseX.set(window.innerWidth / 2 - CURSOR_SIZE / 2);
+      mouseY.set(-100); 
+    }
+
     const manageMouseMove = (e: MouseEvent) => {
-      // Atualiza a posição subtraindo metade do tamanho para centralizar
+      // Na primeira mexida, tornamos visível
+      if (!isVisible) setIsVisible(true);
+
+      // Atualiza para a posição real do mouse
       mouseX.set(e.clientX - CURSOR_SIZE / 2);
       mouseY.set(e.clientY - CURSOR_SIZE / 2);
     };
@@ -29,24 +40,18 @@ export default function Cursor() {
     return () => {
       window.removeEventListener('mousemove', manageMouseMove);
     };
-  }, [mouseX, mouseY]);
+  }, [mouseX, mouseY, isVisible]);
 
   return (
     <motion.div
       style={{
         left: smoothX,
         top: smoothY,
+        opacity: isVisible ? 1 : 0, 
       }}
-      className="fixed pointer-events-none z-[9999] rounded-full mix-blend-difference bg-white"
+      // transition-opacity duration-500: Faz a bolinha aparecer suavemente (fade-in) enquanto viaja
+      className="fixed pointer-events-none z-[9999] rounded-full mix-blend-difference bg-white hidden md:block transition-opacity duration-500"
     >
-      {/* Estilização da bolinha:
-         - w-[20px] h-[20px]: Tamanho definido na constante
-         - bg-white: Cor base (mas o mix-blend-mode vai alterar isso)
-         - rounded-full: Vira bolinha
-         - mix-blend-difference: O TRUQUE DE MESTRE. 
-           Se o fundo for preto, a bola fica branca. Se o fundo for branco, ela fica preta.
-           Isso garante que o cursor nunca suma!
-      */}
       <div 
         className="w-[20px] h-[20px] bg-white rounded-full"
       />
