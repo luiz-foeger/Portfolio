@@ -6,6 +6,7 @@ import Footer from './components/layout/Footer';
 import Home from './pages/Home';
 
 import './App.css';
+import Links from './pages/Links';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/*" element={<Home />} />
+        <Route path="/links" element={<Links />} />
       </Routes>
       <Footer />
     </div>
