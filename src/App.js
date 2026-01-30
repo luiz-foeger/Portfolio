@@ -7,9 +7,13 @@ import Home from './pages/Home';
 
 import './App.css';
 import Links from './pages/Links';
+import { CursorProvider } from './components/ui/CursorContext';
+import { CustomCursor } from './components/ui/CustomCursor';
 
 function App() {
   return (
+    <CursorProvider>
+    <CustomCursor />
     <div className="App">
       <Header />
       <Routes>
@@ -19,6 +23,7 @@ function App() {
       </Routes>
       <Footer />
     </div>
+    </CursorProvider>
   );
 }
 

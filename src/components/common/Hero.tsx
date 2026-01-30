@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { useCursor } from '../ui/CursorContext';
 import {
   motion,
   useScroll,
@@ -21,6 +22,7 @@ const RevealText = ({ children, delay = 0 }: { children: React.ReactNode, delay?
 );
 
 const Hero: React.FC = () => {
+  const { setCursorType, setCursorText } = useCursor();
   const targetRef = useRef<HTMLElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -44,6 +46,7 @@ const Hero: React.FC = () => {
   const mouseXRatio = useMotionValue(0.5);
   const mouseYRatio = useMotionValue(0.5);
 
+
   function handleGlobalMouseMove({ clientX, clientY }: React.MouseEvent) {
     // calculate mouse position ratio (0 to 1)
     mouseXRatio.set(clientX / window.innerWidth);
@@ -58,7 +61,17 @@ const Hero: React.FC = () => {
       {/* spacer */}
       <section
         ref={targetRef}
-        className="relative h-[250vh] w-full pointer-events-none"
+        className="relative z-10 h-screen w-full flex items-center justify-center cursor-none"
+        
+        onMouseMove={handleGlobalMouseMove}
+        onMouseEnter={() => {
+          setCursorType('hero');
+          setCursorText('Luiz Föeger');
+        }}
+        onMouseLeave={() => {
+          setCursorType('default');
+          setCursorText('');
+        }}
       />
 
       <div

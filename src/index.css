@@ -40,7 +40,6 @@ html {
 }
 
 body {
-    /* font-weight: 400; */
     background: radial-gradient(circle, rgba(16, 23, 28, 1) 0%, rgba(5, 8, 10, 1) 100%);
     animation: fadeInAnimation ease 2s;
     animation-iteration-count: 1;
@@ -48,16 +47,22 @@ body {
     height: 100vh;
 }
 
+body {
+  cursor: none;
+}
+
+html, body, a, button, input, textarea, select, [role="button"] {
+  cursor: none !important;
+}
+
 div {
     box-sizing: border-box;
 }
 
-/* * {
+* {
   cursor: none !important;
-} */
+}
 
-/* IMPORTANTE: Em celulares/tablets não existe cursor, 
-   então vamos garantir que seu custom cursor não atrapalhe */
 @media (hover: none) and (pointer: coarse) {
     .custom-cursor {
         display: none;

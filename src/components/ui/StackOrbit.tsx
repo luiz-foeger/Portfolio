@@ -2,6 +2,9 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+
+import { useCursor } from '../ui/CursorContext';
+
 import {
     SiNextdotjs, SiTypescript, SiJavascript, SiTailwindcss,
     SiFigma, SiReact, SiWordpress, SiGit, SiAdobephotoshop, SiNodedotjs,
@@ -37,17 +40,23 @@ const OUTER_ORBIT: OrbitItem[] = [
 ];
 
 const TechOrbit = () => {
-    return (
-        <div className="relative flex items-center justify-center w-full min-h-[700px] md:min-h-[800px] py-20 md:py-0">
+    const { setCursorType } = useCursor();
 
-            {/* núcleo central */}
+    return (
+        <div className="relative flex items-center justify-center w-full min-h-[700px] md:min-h-[800px] py-20 md:py-0"
+            onMouseEnter={() => setCursorType('grab')}
+            onMouseLeave={() => setCursorType('default')}
+            onMouseDown={() => setCursorType('grabbing')}
+            onMouseUp={() => setCursorType('grab')}
+        >
+            {/* ícone github central */}
             <div className="absolute z-20 flex items-center justify-center">
                 <motion.div
                     whileHover={{ scale: 1.1 }}
                     className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-[#0A0A0A] border border-white/10 flex items-center justify-center shadow-[0_0_50px_rgba(141,207,251,0.2)] relative z-10 cursor-pointer p-4"
                 >
-                     {/* <a href="https://github.com/luiz-foeger" target="_blank" rel="noopener noreferrer"><img src="/icon.svg" alt="Logo Föeger.dev" className="w-full h-full object-contain p-0 md:p-1" /></a> */}
-                     <a href="https://github.com/luiz-foeger" target="_blank" rel="noopener noreferrer"><SiGithub className="text-5xl md:text-5xl text-white" /></a>
+                    {/* <a href="https://github.com/luiz-foeger" target="_blank" rel="noopener noreferrer"><img src="/icon.svg" alt="Logo Föeger.dev" className="w-full h-full object-contain p-0 md:p-1" /></a> */}
+                    <a href="https://github.com/luiz-foeger" target="_blank" rel="noopener noreferrer"><SiGithub className="text-5xl md:text-5xl text-white" /></a>
                 </motion.div>
                 <div className="absolute inset-0 bg-[#8DCFFB]/20 blur-3xl rounded-full animate-pulse"></div>
             </div>
