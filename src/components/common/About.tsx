@@ -42,7 +42,7 @@ const About = () => {
                     className="text-left md:text-justify space-y-5 md:space-y-8 mb-10 md:mb-16 max-w-[950px]"
                 >
                     <p className="text-white/90 text-sm sm:text-base md:text-2xl leading-relaxed">
-                        Minha trajetória une a precisão do <span className="text-white font-semibold">Design Gráfico</span> com a lógica do <span className="text-white font-semibold text-[#8dcffb]">Desenvolvimento Full-Stack</span>. Essa combinação me permite enxergar o produto como um todo: da estética à funcionalidade.
+                        Minha trajetória une a precisão do <span className="text-white font-semibold">Design Gráfico</span> com a lógica do <span className="text-white font-semibold">Desenvolvimento Full-Stack</span>. Essa combinação me permite enxergar o produto como um todo: da estética à funcionalidade.
                     </p>
 
                     <p className="text-white/90 text-sm sm:text-base md:text-2xl leading-relaxed">

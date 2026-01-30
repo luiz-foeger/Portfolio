@@ -1,4 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Mea+Culpa&family=Monsieur+La+Doulaise&family=Hind+Siliguri:wght@300;400;500;600;700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lexend:wght@100..900&amily=Lexend:wght@100..900&family=Readex+Pro:wght@160..700&family=Changa+One:ital@0;1&family=Jacquard+24&family=Jersey+10&family=Lavishly+Yours&family=Mea+Culpa&family=Rye&family=UnifrakturMagunti&family=Unbounded:wght@200..900&family=Imperial+Script&family=Zain:wght@200;300;400;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@font-face {
+  font-family: 'Foeger Sans';
+  src: url('./assets/fonts/Foeger-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
 @tailwind base;
 @tailwind components;
@@ -25,6 +32,7 @@ body {
     background-color: rgb(16, 23, 28) !important;
     color: #fff;
     overscroll-behavior-y: none;
+    user-select: none;
 }
 
 html {
@@ -32,8 +40,7 @@ html {
 }
 
 body {
-    font-family: "Lexend", sans-serif;
-    font-weight: 400;
+    /* font-weight: 400; */
     background: radial-gradient(circle, rgba(16, 23, 28, 1) 0%, rgba(5, 8, 10, 1) 100%);
     animation: fadeInAnimation ease 2s;
     animation-iteration-count: 1;

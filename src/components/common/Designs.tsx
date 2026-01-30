@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaExpand, FaTimes, FaBehance } from "react-icons/fa";
+import { FaTimes, FaBehance } from "react-icons/fa";
 
 // --- Definição de Tipos e Dados ---
 
