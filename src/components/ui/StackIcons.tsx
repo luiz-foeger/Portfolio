@@ -46,7 +46,7 @@ const Icones = () => {
             title={item.nome}
           />
 
-          {/* tooltip para mobile/hover */}
+          {/* tooltip mobile/hover */}
           <span className="absolute -top-10 scale-0 group-hover:scale-100 transition-all bg-[#1a1a1a] text-white text-xs py-1 px-2 rounded border border-white/10 whitespace-nowrap">
             {item.nome}
           </span>
