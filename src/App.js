@@ -15,7 +15,7 @@ function App() {
     <CursorProvider>
     <CustomCursor />
     <div className="App">
-      <Header />
+      {/* <Header /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/*" element={<Home />} />

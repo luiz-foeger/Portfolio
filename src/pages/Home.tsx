@@ -1,6 +1,6 @@
 // Home.jsx / page.tsx
 import Cursor from "../components/ui/Cursor";
-import Hero from "../components/common/Hero";
+import HeroToHeader from "../components/common/HeroToHeader";
 // import About from "../components/common/About";
 // import Projects from "../components/common/Projects";
 // import Designs from "../components/common/Designs";
@@ -11,7 +11,7 @@ function Home() {
   return (
     <main className="bg-black min-h-screen w-full">
       <Cursor />
-      <Hero />
+      <HeroToHeader />
       {/* <div className="relative z-10 bg-black"> */}
       <Services />
       {/* <About /> */}

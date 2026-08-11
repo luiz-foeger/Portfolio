@@ -29,7 +29,8 @@
 
 html,
 body {
-    background-color: rgb(16, 23, 28) !important;
+    /* background-color: rgb(16, 23, 28) !important; */
+    background-color: #050505 !important;
     color: #fff;
     overscroll-behavior-y: none;
     user-select: none;
