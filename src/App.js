@@ -9,9 +9,11 @@ import './App.css';
 import Links from './pages/Links';
 import { CursorProvider } from './components/ui/CursorContext';
 import { CustomCursor } from './components/ui/CustomCursor';
+import SmoothScroll from './components/ui/SmoothScroll';
 
 function App() {
   return (
+    <SmoothScroll>
     <CursorProvider>
     <CustomCursor />
     <div className="App">
@@ -24,6 +26,7 @@ function App() {
       <Footer />
     </div>
     </CursorProvider>
+    </SmoothScroll>
   );
 }
 
