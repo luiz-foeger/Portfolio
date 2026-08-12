@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import TechOrbit from '../ui/StackOrbit';
+import StackOrbit from '../ui/StackOrbit';
 // import Icones from '../ui/Icones';
 // import TechPhysics from '../ui/TechPhysics';
 
@@ -85,7 +85,7 @@ const content = {
             </div>
 
             <div className="w-full h-[50vh] md:h-[70vh] flex items-center justify-center scale-[0.6] md:scale-100 origin-center transition-transform duration-500">
-                <TechOrbit />
+                <StackOrbit />
             </div>
 
         </div>

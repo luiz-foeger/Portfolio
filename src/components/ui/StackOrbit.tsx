@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 import { useCursor } from '../ui/CursorContext';
@@ -36,14 +36,22 @@ const OUTER_ORBIT: OrbitItem[] = [
     { icon: SiWordpress, color: '#21759B', label: 'WordPress' },
     { icon: SiVisualstudiocode, color: '#47A248', label: 'VSCode' },
     { icon: SiFigma, color: '#F24E1E', label: 'Figma' },
-    //   { icon: SiMongodb, color: '#47A248', label: 'MongoDB' },
+    //{ icon: SiMongodb, color: '#47A248', label: 'MongoDB' },
 ];
 
-const TechOrbit = () => {
+const StackOrbit = () => {
     const { setCursorType } = useCursor();
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkScreen = () => setIsMobile(window.innerWidth < 768);
+        checkScreen();
+        window.addEventListener('resize', checkScreen);
+        return () => window.removeEventListener('resize', checkScreen);
+    }, []);
 
     return (
-        <div className="relative flex items-center justify-center w-full min-h-[700px] md:min-h-[800px] py-20 md:py-0"
+        <div className="relative flex items-center justify-center w-full min-h-[700px] md:min-h-[800px] py-20 md:py-0 overflow-hidden bg-[#050505]"
             onMouseEnter={() => setCursorType('grab')}
             onMouseLeave={() => setCursorType('default')}
             onMouseDown={() => setCursorType('grabbing')}
@@ -53,23 +61,26 @@ const TechOrbit = () => {
             <div className="absolute z-20 flex items-center justify-center">
                 <motion.div
                     whileHover={{ scale: 1.1 }}
-                    className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-[#0A0A0A] border border-white/10 flex items-center justify-center shadow-[0_0_50px_rgba(141,207,251,0.2)] relative z-10 cursor-pointer p-4"
+                    className="w-20 h-20 md:w-40 md:h-40 rounded-full bg-[#050505] border border-white/10 flex items-center justify-center shadow-[0_0_50px_rgba(141,207,251,0.2)] relative z-10 cursor-pointer p-4"
                 >
                     {/* <a href="https://github.com/luiz-foeger" target="_blank" rel="noopener noreferrer"><img src="/icon.svg" alt="Logo Föeger.dev" className="w-full h-full object-contain p-0 md:p-1" /></a> */}
-                    <a href="https://github.com/luiz-foeger" target="_blank" rel="noopener noreferrer"><SiGithub className="text-5xl md:text-5xl text-white" /></a>
+                    <a href="https://github.com/luiz-foeger" target="_blank" rel="noopener noreferrer"><SiGithub className="text-4xl md:text-7xl text-white" /></a>
                 </motion.div>
                 <div className="absolute inset-0 bg-[#8DCFFB]/20 blur-3xl rounded-full animate-pulse"></div>
             </div>
 
-            {/* órbitas */}
-            <OrbitRing size={280} duration={25} items={INNER_ORBIT} />
+            {/* <OrbitRing size={280} duration={25} items={INNER_ORBIT} />
             <OrbitRing size={450} duration={40} reverse items={MIDDLE_ORBIT} />
-            <OrbitRing size={620} duration={60} items={OUTER_ORBIT} />
+            <OrbitRing size={620} duration={60} items={OUTER_ORBIT} /> */}
+
+            <OrbitRing size={isMobile ? 160 : 300} duration={25} items={INNER_ORBIT} />
+            <OrbitRing size={isMobile ? 270 : 470} duration={40} reverse items={MIDDLE_ORBIT} />
+            <OrbitRing size={isMobile ? 380 : 640} duration={60} items={OUTER_ORBIT} />
 
             {/* grid background */}
-            <div className="absolute inset-0 opacity-[0.05] pointer-events-none"
+            {/* <div className="absolute inset-0 opacity-[0.05] pointer-events-none"
                 style={{ backgroundImage: 'radial-gradient(circle at center, #fff 1px, transparent 1px)', backgroundSize: '30px 30px' }}>
-            </div>
+            </div> */}
         </div>
     );
 };
@@ -82,8 +93,10 @@ const OrbitRing = ({ size, duration, reverse = false, items }: { size: number, d
             {/* anel visual */}
             <div
                 className={`rounded-full border border-white/10 absolute`}
-                style={{ width: size, height: size, transform: 'scale(0.65) md:scale(1)' }}
+                // style={{ width: size, height: size, transform: 'scale(0.65) md:scale(1)' }}
+                style={{ width: size, height: size }}   
             />
+            
 
             {/* container giratório */}
             <motion.div
@@ -114,7 +127,7 @@ const OrbitRing = ({ size, duration, reverse = false, items }: { size: number, d
                                     dragElastic={0.2}
                                     whileHover={{ scale: 1.2, backgroundColor: "rgba(255,255,255,0.1)" }}
                                     whileTap={{ scale: 0.9, cursor: "grabbing" }}
-                                    className="w-11 h-11 md:w-16 md:h-16 bg-[#0A0A0A] border border-white/10 rounded-xl flex items-center justify-center shadow-lg group hover:border-[#8DCFFB] hover:shadow-[#8DCFFB]/30 transition-colors duration-300 cursor-grab"
+                                    className="w-11 h-11 md:w-16 md:h-16 bg-[#0a0a0afb] border border-white/10 rounded-xl flex items-center justify-center shadow-lg group hover:border-[#8DCFFB] hover:shadow-[#8DCFFB]/30 transition-colors duration-300 cursor-grab"
                                 >
                                     <item.icon className="text-xl md:text-3xl text-gray-400 group-hover:text-white transition-colors" />
 
@@ -132,4 +145,4 @@ const OrbitRing = ({ size, duration, reverse = false, items }: { size: number, d
     );
 };
 
-export default TechOrbit;
+export default StackOrbit;
