@@ -1,14 +1,14 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+    import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import { useCursor } from '../ui/CursorContext';
 
 import {
     SiNextdotjs, SiTypescript, SiJavascript, SiTailwindcss,
     SiFigma, SiReact, SiWordpress, SiGit, SiAdobephotoshop, SiNodedotjs,
-    SiDocker, SiVisualstudiocode, SiGithub
+    SiCss3 , SiVisualstudiocode, SiGithub
 } from 'react-icons/si';
 
 interface OrbitItem {
@@ -20,7 +20,7 @@ interface OrbitItem {
 const INNER_ORBIT: OrbitItem[] = [
     { icon: SiReact, color: '#61DAFB', label: 'React' },
     { icon: SiTailwindcss, color: '#38B2AC', label: 'Tailwind' },
-    { icon: SiDocker, color: '#2496ED', label: 'Docker' },
+    { icon: SiCss3 , color: '#2496ED', label: 'CSS3' },
 ];
 
 const MIDDLE_ORBIT: OrbitItem[] = [
@@ -36,86 +36,216 @@ const OUTER_ORBIT: OrbitItem[] = [
     { icon: SiWordpress, color: '#21759B', label: 'WordPress' },
     { icon: SiVisualstudiocode, color: '#47A248', label: 'VSCode' },
     { icon: SiFigma, color: '#F24E1E', label: 'Figma' },
-    //{ icon: SiMongodb, color: '#47A248', label: 'MongoDB' },
 ];
+
+const RING_CONTENT = {
+    default: {
+        title: "Tech\nEcosystem",
+        subtitle: "Architecture Overview",
+        desc: "Hover over the orbital rings to explore the specific niches and tools I use to build high-performance digital experiences.",
+    },
+    center: {
+        title: "Source\nControl",
+        subtitle: "Central Hub",
+        desc: "The core of the ecosystem. Where all logic, creative code, and architecture are versioned, stored, and continuously integrated."
+        // cta: "SCROLL TO EXPLORE"
+    },
+    0: {
+        title: "Frontend\nCore",
+        subtitle: "User Interface (UI)",
+        desc: "The foundation of visual performance. React for component-driven UI, Tailwind for rapid styling, and Docker for consistent environments.",
+        // cta: "VIEW COMPONENTS"
+    },
+    1: {
+        title: "Fullstack\nEngine",
+        subtitle: "Logic & Data",
+        desc: "The JavaScript/TypeScript powerhouse. Next.js and Node.js working in harmony to deliver robust, SEO-friendly, and scalable applications.",
+        // cta: "VIEW REPOSITORIES"
+    },
+    2: {
+        title: "Design &\nOps",
+        subtitle: "Creative Control",
+        desc: "The creative and structural layer. From UI/UX prototyping in Figma and Photoshop to version control and content management.",
+        // cta: "VIEW CASE STUDIES"
+    }
+};
 
 const StackOrbit = () => {
     const { setCursorType } = useCursor();
     const [isMobile, setIsMobile] = useState(false);
+    
+    // estado que guarda qual anel está com o mouse em cima (0, 1, 2 ou null)
+    const [activeText, setActiveText] = useState<number | 'default' | 'center'>('default');
+    // const [activeRing, setActiveRing] = useState<number | null>(null);;
 
     useEffect(() => {
-        const checkScreen = () => setIsMobile(window.innerWidth < 768);
+        const checkScreen = () => setIsMobile(window.innerWidth < 1024);
         checkScreen();
         window.addEventListener('resize', checkScreen);
         return () => window.removeEventListener('resize', checkScreen);
     }, []);
 
+    // define o conteúdo baseado no hover
+    const currentContent = RING_CONTENT[activeText !== null ? activeText as keyof typeof RING_CONTENT : 'default'];
+    // const currentContent = RING_CONTENT[activeRing !== null ? activeRing as keyof typeof RING_CONTENT : 'default'];
+
     return (
-        <div className="relative flex items-center justify-center w-full min-h-[700px] md:min-h-[800px] py-20 md:py-0 overflow-hidden bg-[#050505]"
+        <div className="relative flex flex-col lg:flex-row items-center justify-between w-full min-h-[700px] md:min-h-[900px] py-20 lg:py-0 px-6 md:px-12 lg:px-24 overflow-hidden bg-[#050505]"
             onMouseEnter={() => setCursorType('grab')}
             onMouseLeave={() => setCursorType('default')}
             onMouseDown={() => setCursorType('grabbing')}
-            onMouseUp={() => setCursorType('grab')}
+            onMouseUp={() => setCursorType('grab')} 
         >
-            {/* ícone github central */}
-            <div className="absolute z-20 flex items-center justify-center">
-                <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    className="w-20 h-20 md:w-40 md:h-40 rounded-full bg-[#050505] border border-white/10 flex items-center justify-center shadow-[0_0_50px_rgba(141,207,251,0.2)] relative z-10 cursor-pointer p-4"
-                >
-                    {/* <a href="https://github.com/luiz-foeger" target="_blank" rel="noopener noreferrer"><img src="/icon.svg" alt="Logo Föeger.dev" className="w-full h-full object-contain p-0 md:p-1" /></a> */}
-                    <a href="https://github.com/luiz-foeger" target="_blank" rel="noopener noreferrer"><SiGithub className="text-4xl md:text-7xl text-white" /></a>
-                </motion.div>
-                <div className="absolute inset-0 bg-[#8DCFFB]/20 blur-3xl rounded-full animate-pulse"></div>
+            
+            {/* left content */}
+            <div className="z-30 w-full lg:w-[30%] flex flex-col items-start justify-center text-left mb-16 lg:mb-0 pointer-events-none">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={currentContent.title}
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -15 }}
+                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                        <h2 className="text-5xl md:text-6xl lg:text-7xl font-medium tracking-tighter text-white leading-[1.05] whitespace-pre-line">
+                            {currentContent.title}
+                        </h2>
+                        <div className="mt-8 md:mt-16">
+                            <p className="text-xs font-mono text-neutral-500 mb-4 tracking-widest uppercase">
+                                {currentContent.subtitle}
+                            </p>
+                            <div className="h-[1px] w-full max-w-[200px] bg-white/20" />
+                        </div>
+                    </motion.div>
+                </AnimatePresence>
             </div>
 
-            {/* <OrbitRing size={280} duration={25} items={INNER_ORBIT} />
-            <OrbitRing size={450} duration={40} reverse items={MIDDLE_ORBIT} />
-            <OrbitRing size={620} duration={60} items={OUTER_ORBIT} /> */}
 
-            <OrbitRing size={isMobile ? 160 : 300} duration={25} items={INNER_ORBIT} />
-            <OrbitRing size={isMobile ? 270 : 470} duration={40} reverse items={MIDDLE_ORBIT} />
-            <OrbitRing size={isMobile ? 380 : 640} duration={60} items={OUTER_ORBIT} />
+            {/* center content */}
+            <div className="relative flex items-center justify-center w-full lg:w-[40%] h-[500px] md:h-[650px] z-20">  
+                <div 
+                    className="absolute z-20 flex items-center justify-center pointer-events-auto group"
+                    onMouseEnter={() => setActiveText('center')}
+                    onMouseLeave={() => setActiveText('default')}
+                >
+                    <motion.div
+                        whileHover={{ scale: 1.1 }}
+                        // CORREÇÃO: O hover da borda e da sombra agora têm valores absolutos e transição suave
+                        className="w-20 h-20 md:w-32 md:h-32 rounded-full bg-[#050505] border border-white/10 flex items-center justify-center shadow-[0_0_50px_rgba(141,207,251,0.15)] relative z-10 cursor-pointer p-4 transition-all duration-500 hover:border-[#8DCFFB]/60 hover:shadow-[0_0_60px_rgba(141,207,251,0.6)]"
+                    >
+                        <a href="https://github.com/luiz-foeger" target="_blank" rel="noopener noreferrer">
+                            <SiGithub className="text-4xl md:text-6xl text-white transition-colors duration-300 group-hover:text-white" />
+                        </a>
+                    </motion.div>
+                    
+                    {/* Opcional: Aumentei levemente a opacidade do pulso de fundo para dar mais presença */}
+                    <div className="absolute inset-0 bg-[#8DCFFB]/15 blur-3xl rounded-full animate-pulse"></div>
+                </div>
 
-            {/* grid background */}
-            {/* <div className="absolute inset-0 opacity-[0.05] pointer-events-none"
-                style={{ backgroundImage: 'radial-gradient(circle at center, #fff 1px, transparent 1px)', backgroundSize: '30px 30px' }}>
-            </div> */}
+                  <OrbitRing 
+                    index={0} size={isMobile ? 180 : 300} duration={25} items={INNER_ORBIT} 
+                    isActive={activeText === 0} onHover={(idx) => setActiveText(idx ?? 'default')} 
+                />
+                <OrbitRing 
+                    index={1} size={isMobile ? 290 : 470} duration={40} reverse items={MIDDLE_ORBIT} 
+                    isActive={activeText === 1} onHover={(idx) => setActiveText(idx ?? 'default')} 
+                />
+                <OrbitRing 
+                    index={2} size={isMobile ? 400 : 640} duration={60} items={OUTER_ORBIT} 
+                    isActive={activeText === 2} onHover={(idx) => setActiveText(idx ?? 'default')} 
+                />
+            </div>
+
+
+            {/* right content */}
+            <div className="z-30 w-full lg:w-[30%] flex flex-col items-start lg:items-end justify-center text-left lg:text-right mt-16 lg:mt-0 pointer-events-none">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={currentContent.desc}
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -15 }}
+                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                        className="flex flex-col items-start lg:items-end"
+                    >
+                        <p className="text-neutral-400 text-sm md:text-base leading-relaxed max-w-sm">
+                            {currentContent.desc}
+                        </p>
+                        {/* <div className="mt-8 pointer-events-auto">
+                            <a href="#" className="text-xs font-mono text-white tracking-widest uppercase hover:text-[#8DCFFB] transition-colors flex items-center gap-3 group">
+                                {currentContent.cta} 
+                                <span className="text-lg transform group-hover:translate-x-1 transition-transform">→</span>
+                            </a>
+                        </div> */}
+                    </motion.div>
+                </AnimatePresence>
+            </div>
+
         </div>
     );
 };
 
-const OrbitRing = ({ size, duration, reverse = false, items }: { size: number, duration: number, reverse?: boolean, items: OrbitItem[] }) => {
+interface OrbitRingProps {
+    index: number;
+    size: number;
+    duration: number;
+    reverse?: boolean;
+    items: OrbitItem[];
+    isActive: boolean;
+    onHover: (index: number | null) => void;
+}
+
+const OrbitRing = ({ index, size, duration, reverse = false, items, isActive, onHover }: OrbitRingProps) => {
     const angleStep = 360 / items.length;
+    const svgSize = size + 60; 
 
     return (
-        <div className="absolute flex items-center justify-center pointer-events-none">
-            {/* anel visual */}
-            <div
-                className={`rounded-full border border-white/10 absolute`}
-                // style={{ width: size, height: size, transform: 'scale(0.65) md:scale(1)' }}
-                style={{ width: size, height: size }}   
-            />
+        <div className="absolute flex items-center justify-center pointer-events-none z-10">
             
+            <svg width={svgSize} height={svgSize} className="absolute pointer-events-none" style={{ overflow: 'visible' }}>
+                
+                {/* style com pointerEvents: 'stroke' força o navegador a ler o hover */}
+                <circle
+                    cx={svgSize / 2}
+                    cy={svgSize / 2}
+                    r={size / 2}
+                    fill="none"
+                    stroke="transparent"
+                    strokeWidth="40"
+                    style={{ pointerEvents: 'stroke', cursor: 'crosshair' }}
+                    onMouseEnter={() => onHover(index)}
+                    onMouseLeave={() => onHover(null)}
+                />
+                
+                <circle
+                    cx={svgSize / 2}
+                    cy={svgSize / 2}
+                    r={size / 2}
+                    fill="none"
+                    stroke={isActive ? "rgba(141, 207, 251, 0.5)" : "rgba(255,255,255,0.05)"}
+                    strokeWidth={isActive ? "2" : "1"}
+                    className="pointer-events-none transition-all duration-300 ease-out"
+                />
+            </svg>
 
-            {/* container giratório */}
+            {/* container giratório dos ícones */}
             <motion.div
                 animate={{ rotate: reverse ? -360 : 360 }}
                 transition={{ duration: duration, repeat: Infinity, ease: "linear" }}
-                className={`relative rounded-full flex items-center justify-center`}
+                className="relative rounded-full flex items-center justify-center"
                 style={{ width: size, height: size }}
             >
-                {items.map((item, index) => {
-                    const angle = index * angleStep;
+                {items.map((item, idx) => {
+                    const angle = idx * angleStep;
                     return (
                         <div
-                            key={index}
+                            key={idx}
                             className="absolute flex items-center justify-center pointer-events-auto"
                             style={{
                                 transform: `rotate(${angle}deg) translate(${size / 2}px) rotate(-${angle}deg)`,
                             }}
                         >
-                            {/* icons com física de arrastar */}
+                            {/* contra-rotação para os ícones ficarem retos */}
                             <motion.div
                                 animate={{ rotate: reverse ? 360 : -360 }}
                                 transition={{ duration: duration, repeat: Infinity, ease: "linear" }}
@@ -127,11 +257,11 @@ const OrbitRing = ({ size, duration, reverse = false, items }: { size: number, d
                                     dragElastic={0.2}
                                     whileHover={{ scale: 1.2, backgroundColor: "rgba(255,255,255,0.1)" }}
                                     whileTap={{ scale: 0.9, cursor: "grabbing" }}
-                                    className="w-11 h-11 md:w-16 md:h-16 bg-[#0a0a0afb] border border-white/10 rounded-xl flex items-center justify-center shadow-lg group hover:border-[#8DCFFB] hover:shadow-[#8DCFFB]/30 transition-colors duration-300 cursor-grab"
+                                    // a caixinha acende a borda levemente se o anel inteiro estiver ativo
+                                    className={`w-11 h-11 md:w-16 md:h-16 bg-[#0a0a0afb] border rounded-xl flex items-center justify-center shadow-lg group transition-colors duration-300 cursor-grab ${isActive ? 'border-[#8DCFFB]/50' : 'border-white/10 hover:border-[#8DCFFB]'}`}
                                 >
-                                    <item.icon className="text-xl md:text-3xl text-gray-400 group-hover:text-white transition-colors" />
+                                    <item.icon className={`text-xl md:text-3xl transition-colors ${isActive ? 'text-white' : 'text-gray-500'} group-hover:text-white`} />
 
-                                    {/* tooltip */}
                                     <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-mono text-[#8DCFFB] whitespace-nowrap bg-black/80 px-2 py-1 rounded border border-white/10 pointer-events-none z-20">
                                         {item.label}
                                     </div>
@@ -143,6 +273,6 @@ const OrbitRing = ({ size, duration, reverse = false, items }: { size: number, d
             </motion.div>
         </div>
     );
-};
+};  
 
 export default StackOrbit;
