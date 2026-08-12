@@ -6,6 +6,7 @@ import HeroToHeader from "../components/common/HeroToHeader";
 // import Designs from "../components/common/Designs";
 // import Bento from "../components/common/Bento";
 import Services from "../components/ui/Services";
+import ScrollManifesto from "../components/ui/ScrollManifesto";
 
 function Home() {
   return (
@@ -13,6 +14,7 @@ function Home() {
       <Cursor />
       <HeroToHeader />
       {/* <div className="relative z-10 bg-black"> */}
+      <ScrollManifesto />
       <Services />
       {/* <About /> */}
       {/* <Bento /> */}
