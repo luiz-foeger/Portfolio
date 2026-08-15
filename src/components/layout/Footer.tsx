@@ -1,105 +1,233 @@
 'use client';
 
-import { FaInstagram, FaLinkedin, FaGithub, FaWhatsapp, FaBehance } from 'react-icons/fa';
-import { AnimatedLogoFooter } from '../ui/AnimatedLogoFooter';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-interface LinkItem { label: string; href: string; }
-interface SocialItem { icon: React.ElementType; href: string; label: string; }
+const Links = ({ text, href, className = "" }: { text: string, href?: string, className?: string }) => {
+  const Tag = href ? "a" : "button";
+  return (
+    <Tag
+      href={href}
+      target={href?.startsWith('http') ? "_blank" : "_self"}
+      rel={href?.startsWith('http') ? "noopener noreferrer" : ""}
+      className={`group relative overflow-hidden inline-flex ${className}`}
+    >
+      <span className="transition-transform duration-500 ease-[0.16,1,0.3,1] group-hover:-translate-y-full">
+        {text}
+      </span>
+      <span className="absolute inset-0 transition-transform duration-500 ease-[0.16,1,0.3,1] translate-y-full group-hover:translate-y-0 text-white">
+        {text}
+      </span>
+    </Tag>
+  );
+};
 
-export default function Footer() {
-  const currentYear = new Date().getFullYear();
+const FlipDigit = ({ char }: { char: string }) => {
+  return (
+    <div className="relative inline-flex overflow-hidden items-center justify-center leading-none">
+      <AnimatePresence mode="popLayout">
+        <motion.span
+          key={char}
+          initial={{ y: "100%", rotateX: -90, opacity: 0 }}
+          animate={{ y: "0%", rotateX: 0, opacity: 1 }}
+          exit={{ y: "-100%", rotateX: 90, opacity: 0 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="inline-block origin-bottom"
+        >
+          {char}
+        </motion.span>
+      </AnimatePresence>
+    </div>
+  );
+};
 
-  const mainLinks: LinkItem[] = [
-    { label: 'Sobre Mim', href: 'https://luizfoeger.vercel.app/' },
-    { label: 'Meu Portfólio', href: '#' },
-    { label: 'Serviços', href: '#' },
-  ];
+const FlipNumber = ({ value }: { value: string }) => (
+  <div className="flex items-center">
+    <FlipDigit char={value[0] || '0'} />
+    <FlipDigit char={value[1] || '0'} />
+  </div>
+);
 
-  const projectLinks: LinkItem[] = [
-    { label: 'LD Consultoria', href: 'https://equipeld.com.br' },
-    { label: 'CineDev', href: 'https://cinedev-project.vercel.app/' },
-    { label: 'EA SPORTS FC™ 24', href: 'https://ea-sports-fc.vercel.app/' },
-    { label: 'Academia Equilíbrio', href: 'https://academia-equilibrio.vercel.app/' },
-    { label: 'Montch.br®', href: 'https://montch.vercel.app/' },
-  ];
+const Footer = () => {
+  const [time, setTime] = useState({ hours: '00', minutes: '00', seconds: '00' });
+  const [mounted, setMounted] = useState(false);
+  const [currentYear, setCurrentYear] = useState('26');
 
-  const socialLinks: SocialItem[] = [
-    { icon: FaLinkedin, href: 'https://www.linkedin.com/in/luiz-foeger/', label: 'LinkedIn' },
-    { icon: FaGithub, href: 'https://github.com/luiz-foeger', label: 'GitHub' },
-    { icon: FaInstagram, href: 'https://instagram.com/foeger.dev', label: 'Instagram' },
-    { icon: FaBehance, href: 'https://www.behance.net/foeger', label: 'Behance' },
-    { icon: FaWhatsapp, href: 'https://wa.me/5527997649105', label: 'WhatsApp' },
-  ];
+  const email = "foegerluiz@gmail.com";
+
+  // Lógica do Horário BR e Ano
+  useEffect(() => {
+    setMounted(true);
+    const updateTime = () => {
+      const now = new Date();
+      const formatter = new Intl.DateTimeFormat('pt-BR', {
+        timeZone: 'America/Sao_Paulo',
+        hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+      });
+      const parts = formatter.formatToParts(now);
+      const hh = parts.find(p => p.type === 'hour')?.value || '00';
+      const mm = parts.find(p => p.type === 'minute')?.value || '00';
+      const ss = parts.find(p => p.type === 'second')?.value || '00';
+
+      setTime({ hours: hh, minutes: mm, seconds: ss });
+      setCurrentYear(now.getFullYear().toString().slice(-2));
+    };
+
+    updateTime();
+    const id = setInterval(updateTime, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  const handleScrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  const staggerHover = { hover: { transition: { staggerChildren: 0.015 } } };
+  const charVariantOut = {
+    initial: { y: 0 },
+    hover: { y: "-100%", transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } }
+  };
+  const charVariantIn = {
+    initial: { y: "100%" },
+    hover: { y: "0%", transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } }
+  };
 
   return (
-    <footer className="bg-neutral-950 text-neutral-400 border-t border-neutral-800 font-sans">
-      <div className="max-w-7xl mx-auto px-6 py-12 lg:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.6fr_0.7fr_0.7fr_0.7fr] gap-12 mb-12">
+    <footer className="w-full min-h-screen bg-[#050505] text-white flex flex-col justify-between p-6 md:p-8 lg:p-12 relative z-20 border-t border-white/10 font-sans">
 
-          {/* COLUNA 1: Informações */}
-          <div className="flex flex-col items-start gap-8 md:gap-14"> {/* Gap menor no mobile */}
+      {/* navigation superior */}
+      <div className="font-['Bricolage_Grotesque'] font-bold text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1vw] grid grid-cols-2 md:grid-cols-4 gap-50 w-full items-start uppercase tracking-[0.2em]">
 
-            <div className="w-64 md:w-[340px]">
-              <AnimatedLogoFooter />
-            </div>
-
-            <p className="text-sm leading-relaxed max-w-xs">
-              Desenvolvendo experiências digitais com foco em performance, design e interatividade.
-            </p>
-          </div>
-
-          {/* COLUNA 2: Navegação */}
-          <div className="flex flex-col gap-4">
-            <h3 className="text-white font-semibold text-lg">Navegação</h3>
-            <ul className="flex flex-col gap-3">
-              {mainLinks.map((link) => (
-                <li key={link.label}>
-                  <a href={link.href} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-200 text-sm">{link.label}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* COLUNA 3: Projetos */}
-          <div className="flex flex-col gap-4">
-            <h3 className="text-white font-semibold text-lg">Projetos Destaque</h3>
-            <ul className="flex flex-col gap-3">
-              {projectLinks.map((link) => (
-                <li key={link.label}>
-                  <a href={link.href} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-200 text-sm flex items-center gap-2 group">
-                    {/* <span className="w-1.5 h-1.5 rounded-full bg-neutral-600 group-hover:bg-white transition-colors"></span> */}
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* COLUNA 4: Contato */}
-          <div className="flex flex-col gap-4">
-            <h3 className="text-white font-semibold text-lg">Contato</h3>
-            <a href="mailto:foegerluiz@gmail.com" className="text-sm hover:text-white transition-colors">foegerluiz@gmail.com</a>
-            <div className="flex gap-4 mt-2">
-              {socialLinks.map((social) => (
-                <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} className="bg-neutral-900 p-2.5 rounded-full hover:bg-white hover:text-black transition-all duration-300 transform hover:-translate-y-1">
-                  <social.icon size={18} />
-                </a>
-              ))}
-            </div>
-          </div>
-
+        <div className="font-['Bricolage_Grotesque'] items-start md:items-start flex flex-col gap-2">
+          <Links text="INFO" href="#" className="text-neutral-500 w-fit hover:text-white" />
+          <Links text="CONTACT" href="#" className="text-neutral-500 w-fit hover:text-white" />
         </div>
 
-        {/* Copyright */}
-        <div className="border-t border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
-          <p>© {currentYear} Luiz Felipe Föeger dos Santos | Todos os direitos reservados.</p>
-          <div className="flex gap-6">
-            <span className="cursor-pointer hover:text-white transition-colors">Privacidade</span>
-            <span className="cursor-pointer hover:text-white transition-colors">Termos</span>
+        <div className="flex flex-col gap-2 items-end md:items-start md:pr-10 pb-10">
+          <Links text="GITHUB" href="https://github.com/luiz-foeger" className="text-neutral-500 w-fit hover:text-white" />
+          <Links text="LINKEDIN" href="#" className="text-neutral-500 w-fit hover:text-white" />
+          <Links text="BEHANCE" href="#" className="text-neutral-500 w-fit hover:text-white" />
+        </div>
+
+        <div className="flex flex-col gap-2 md:items-end md:pr-10 pb-10">
+          <span onClick={handleScrollToTop} className="w-fit">
+            <Links text="INDEX" className="text-neutral-500 hover:text-white" />
+          </span>
+        </div>
+
+        <div className="flex flex-col gap-2 items-end md:items-end text-right md:pr-10">
+          <div className="flex font-mono text-white normal-case leading-none font-bold text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1vw] tracking-widest items-center">
+            {mounted ? (
+              <>
+                <FlipNumber value={time.hours} />
+                <span className="mx-[2px] animate-pulse relative -top-[1px]">:</span>
+                <FlipNumber value={time.minutes} />
+                <span className="mx-[2px] animate-pulse text-neutral-500 relative -top-[1px]">:</span>
+                <span className="text-neutral-500"><FlipNumber value={time.seconds} /></span>
+              </>
+            ) : <span>--:--:--</span>}
           </div>
+          <span className="font-bold text-neutral-500">BRAZIL</span>
+        </div>
+      </div>
+
+      {/* centro */}
+      <div className="flex-grow flex flex-col justify-center items-center py-16 md:py-24 w-full">
+
+        <motion.a
+          href={`mailto:${email}`}
+          initial="initial"
+          whileHover="hover"
+          className="font-['Bricolage_Grotesque'] text-[8.5vw] lg:text-[9.25vw] mb-1 md:mb-0 font-black text-white leading-[0.8] tracking-tighter uppercase drop-shadow-2xl relative overflow-hidden"
+        >
+          <motion.div className="flex" variants={staggerHover}>
+            {email.split('').map((char, i) => (
+              <motion.span key={i} variants={charVariantOut} className="inline-block">
+                {char}
+              </motion.span>
+            ))}
+          </motion.div>
+
+          {/* Texto que entra (Branco puro tbm, como pedido) */}
+          <motion.div className="absolute top-0 left-0 flex" variants={staggerHover}>
+            {email.split('').map((char, i) => (
+              <motion.span key={i} variants={charVariantIn} className="inline-block text-white">
+                {char}
+              </motion.span>
+            ))}
+          </motion.div>
+        </motion.a>
+
+        {/* <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center w-full pointer-events-none">
+                <h1 className="font-['Bricolage_Grotesque'] text-[8.5vw] lg:text-[9.25vw] mb-1 md:mb-0 font-black  text-white leading-[0.8] tracking-tighter uppercase drop-shadow-2xl">
+                    foegerluiz@gmail.com
+                </h1>
+                <h1 className="font-['Bricolage_Grotesque'] text-[8.5vw] lg:text-[9.25vw] font-black text-white leading-[0.8] tracking-tighter uppercase drop-shadow-2xl">
+                    ©2026
+                </h1>
+            </div> */}
+
+        <h1 className="font-['Bricolage_Grotesque'] text-[8.5vw] lg:text-[9.25vw] font-black text-white leading-[0.8] tracking-tighter uppercase drop-shadow-2xl">
+          ©2026
+        </h1>
+      </div>
+
+      {/* baseline */}
+      {/* [1] @FOEGER.DEV */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 md:gap-6 w-full items-start">
+
+        <div className="flex flex-col group">
+          <span className="text-base md:text-xl leading-none -mt-[3px] text-neutral-600 mb-2 font-['Bricolage_Grotesque'] transition-colors group-hover:text-white">
+            [1]
+          </span>
+          <h3 className="text-xl lg:text-2xl uppercase font-['Bricolage_Grotesque'] font-bold tracking-widest text-white mb-2">
+            <Links text="@FOEGER.DEV" href="https://instagram.com/foeger.dev" />
+          </h3>
+        </div>
+
+        {/* [2] 23—26 */}
+        <div className="font-['Bricolage_Grotesque'] flex flex-col group">
+          <span className="text-base md:text-xl leading-none -mt-[3px] text-neutral-600 mb-2 font-['Bricolage_Grotesque'] transition-colors group-hover:text-white">
+            [2]
+          </span>
+          <h3 className="text-xl lg:text-2xl uppercase font-['Bricolage_Grotesque'] font-bold tracking-widest text-white mb-4">
+            23—{currentYear}
+          </h3>
+          <p className="text-neutral-400 normal-case leading-relaxed text-[4.5vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1vw] pr-2">
+            The architecture fills its space with clean code and uncompromising design, building high-performance products tailored for modern demands.
+          </p>
+        </div>
+
+        {/* [3] STATUS */}
+        <div className="font-['Bricolage_Grotesque'] flex flex-col group md:items-end md:text-right">
+          <span className="text-base md:text-xl leading-none -mt-[3px] text-neutral-600 mb-2 font-['Bricolage_Grotesque'] transition-colors group-hover:text-white">
+            [3]
+          </span>
+          <h3 className="text-xl lg:text-2xl uppercase font-['Bricolage_Grotesque'] font-bold tracking-widest text-white mb-4">
+            STATUS
+          </h3>
+          <p className="text-neutral-400 normal-case leading-relaxed text-[4.5vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1vw] mix-blend-difference">
+            Available for new projects.
+          </p>
+        </div>
+
+        {/* [4] SCOPE */}
+        <div className="font-['Bricolage_Grotesque'] flex flex-col group md:items-end md:text-right">
+          <div className="flex flex-col items-start md:items-end">
+            <span className="text-base md:text-xl leading-none -mt-[3px] text-neutral-600 mb-2 font-['Bricolage_Grotesque'] transition-colors group-hover:text-white">
+              [4]
+            </span>
+            <h3 className="text-xl lg:text-2xl uppercase font-['Bricolage_Grotesque'] font-bold tracking-widest text-white mb-4">
+              SCOPE
+            </h3>
+          </div>
+          <p className="text-neutral-400 normal-case text-[4.5vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1vw] leading-relaxed max-w-[250px]">
+            4/4
+          </p>
         </div>
 
       </div>
+
     </footer>
   );
 }
+
+export default Footer;
