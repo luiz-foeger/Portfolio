@@ -42,30 +42,30 @@ const RING_CONTENT = {
     default: {
         title: "Tech\nEcosystem",
         subtitle: "Architecture Overview",
-        desc: "Hover over the orbital rings to explore the specific niches and tools I use to build high-performance digital experiences.",
+        desc: "Interact with the orbital rings to dissect the specialized tools, runtimes, and frameworks driving my high-performance digital solutions.",
     },
     center: {
         title: "Source\nControl",
         subtitle: "Central Hub",
-        desc: "The core of the ecosystem. Where all logic, creative code, and architecture are versioned, stored, and continuously integrated."
+        desc: "The architectural anchor where logical structures, creative code, and automation pipelines converge securely."
         // cta: "SCROLL TO EXPLORE"
     },
     0: {
         title: "Frontend\nCore",
         subtitle: "User Interface (UI)",
-        desc: "The foundation of visual performance. React for component-driven UI, Tailwind for rapid styling, and Docker for consistent environments.",
+        desc: "Engineers immersive client-side experiences through reactive component architectures, fluid styling systems, and ultra-responsive layouts.",
         // cta: "VIEW COMPONENTS"
     },
     1: {
         title: "Fullstack\nEngine",
         subtitle: "Logic & Data",
-        desc: "The JavaScript/TypeScript powerhouse. Next.js and Node.js working in harmony to deliver robust, SEO-friendly, and scalable applications.",
+        desc: "Powers high-throughput server infrastructures, integrating hybrid data-fetching, robust server-side execution, and type-safe backend environments.",
         // cta: "VIEW REPOSITORIES"
     },
     2: {
-        title: "Design &\nOps",
+        title: "Design\n& Ops",
         subtitle: "Creative Control",
-        desc: "The creative and structural layer. From UI/UX prototyping in Figma and Photoshop to version control and content management.",
+        desc: "Harmonizes user experience prototyping with infrastructure management, ensuring intuitive interfaces backed by resilient deployment pipelines.",
         // cta: "VIEW CASE STUDIES"
     }
 };
@@ -107,14 +107,16 @@ const StackOrbit = () => {
                         exit={{ opacity: 0, y: -15 }}
                         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        <h2 className="text-5xl md:text-6xl lg:text-7xl font-medium tracking-tighter text-white leading-[1.05] whitespace-pre-line">
+                        {/* <h2 className="text-5xl md:text-6xl lg:text-7xl font-lexend font-black tracking-tighter text-white leading-[1.05] whitespace-pre-line"> */}
+                        <h2 className="font-['Bebas_Neue'] font-black text-[18vw] sm:text-[15vw] md:text-[12vw] lg:text-[6vw] leading-[0.85] tracking-wide sm:tracking-normal text-white whitespace-pre-line">
                             {currentContent.title}
                         </h2>
                         <div className="mt-8 md:mt-16">
-                            <p className="text-xs font-mono text-neutral-500 mb-4 tracking-widest uppercase">
+                            {/* <p className="text-xs font-lexend text-neutral-500 mb-4 tracking-widest uppercase"> */}
+                            <p className="text-[5vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.5vw] text-neutral-400 mb-4 leading-relaxed max-w-sm">
                                 {currentContent.subtitle}
                             </p>
-                            <div className="h-[1px] w-full max-w-[200px] bg-white/20" />
+                            <div className="h-[2px] w-full max-w-[500px] bg-white/40" />
                         </div>
                     </motion.div>
                 </AnimatePresence>
@@ -168,11 +170,11 @@ const StackOrbit = () => {
                         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                         className="flex flex-col items-start lg:items-end"
                     >
-                        <p className="text-neutral-400 text-sm md:text-base leading-relaxed max-w-sm">
+                        <p className="text-neutral-400 text-[5vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.5vw] text-left max-w-sm">
                             {currentContent.desc}
                         </p>
                         {/* <div className="mt-8 pointer-events-auto">
-                            <a href="#" className="text-xs font-mono text-white tracking-widest uppercase hover:text-[#8DCFFB] transition-colors flex items-center gap-3 group">
+                            <a href="#" className="text-xs font-lexend text-white tracking-widest uppercase hover:text-[#8DCFFB] transition-colors flex items-center gap-3 group">
                                 {currentContent.cta} 
                                 <span className="text-lg transform group-hover:translate-x-1 transition-transform">→</span>
                             </a>
@@ -262,7 +264,7 @@ const OrbitRing = ({ index, size, duration, reverse = false, items, isActive, on
                                 >
                                     <item.icon className={`text-xl md:text-3xl transition-colors ${isActive ? 'text-white' : 'text-gray-500'} group-hover:text-white`} />
 
-                                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-mono text-[#8DCFFB] whitespace-nowrap bg-black/80 px-2 py-1 rounded border border-white/10 pointer-events-none z-20">
+                                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[12px] font-lexend text-[#8DCFFB] whitespace-nowrap bg-black/80 px-2 py-1 rounded border border-white/10 pointer-events-none z-20">
                                         {item.label}
                                     </div>
                                 </motion.div>
