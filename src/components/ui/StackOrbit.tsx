@@ -51,21 +51,21 @@ const RING_CONTENT = {
         // cta: "SCROLL TO EXPLORE"
     },
     0: {
-        title: "Frontend\nCore",
-        subtitle: "User Interface (UI)",
+        title: "Client\nLayer",
+        subtitle: "Client Architecture",
         desc: "Engineers immersive client-side experiences through reactive component architectures, fluid styling systems, and ultra-responsive layouts.",
         // cta: "VIEW COMPONENTS"
     },
     1: {
         title: "Fullstack\nEngine",
-        subtitle: "Logic & Data",
+        subtitle: "Server, Logic and Data",
         desc: "Powers high-throughput server infrastructures, integrating hybrid data-fetching, robust server-side execution, and type-safe backend environments.",
         // cta: "VIEW REPOSITORIES"
     },
     2: {
         title: "Design\n& Ops",
         subtitle: "Creative Control",
-        desc: "Harmonizes user experience prototyping with infrastructure management, ensuring intuitive interfaces backed by resilient deployment pipelines.",
+        desc: "Unites user experience with infrastructure management, ensuring intuitive interfaces backed by resilient deployment pipelines.",
         // cta: "VIEW CASE STUDIES"
     }
 };
@@ -113,7 +113,7 @@ const StackOrbit = () => {
                         </h2>
                         <div className="mt-8 md:mt-16">
                             {/* <p className="text-xs font-lexend text-neutral-500 mb-4 tracking-widest uppercase"> */}
-                            <p className="text-[5vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.5vw] text-neutral-400 mb-4 leading-relaxed max-w-sm">
+                            <p className="font-['Bricolage_Grotesque'] font-bold text-[5vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.5vw] text-neutral-400 mb-4 leading-relaxed max-w-sm">
                                 {currentContent.subtitle}
                             </p>
                             <div className="h-[2px] w-full max-w-[500px] bg-white/40" />
@@ -170,7 +170,7 @@ const StackOrbit = () => {
                         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                         className="flex flex-col items-start lg:items-end"
                     >
-                        <p className="text-neutral-400 text-[5vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.5vw] text-left max-w-sm">
+                        <p className="font-['Bricolage_Grotesque'] font-bold text-neutral-400 text-[5vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.5vw] text-left max-w-sm">
                             {currentContent.desc}
                         </p>
                         {/* <div className="mt-8 pointer-events-auto">
