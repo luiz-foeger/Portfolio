@@ -22,6 +22,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/*" element={<Home />} />
         <Route path="/links" element={<Links />} />
+
+        {/* <Route path="/services/digital-products" element={<DigitalProducts />} /> */}
+        {/* <Route path="/services/web-prototyping" element={<WebPrototyping />} /> */}
+        {/* <Route path="/services/graphic-visuals" element={<GraphicVisuals />} /> */}
+        {/* <Route path="/services/experimental-lab" element={<ExperimentalLab />} /> */}
+        
       </Routes>
       <Footer />
     </div>

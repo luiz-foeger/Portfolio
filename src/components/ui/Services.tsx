@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
 import { FiArrowUpRight } from 'react-icons/fi';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const SERVICES = [
   {
@@ -35,8 +35,8 @@ const SERVICES = [
   }
 ];
 
-export default function Services() {
-  // const navigate = useNavigate(); 
+const Services = () => {
+  const navigate = useNavigate(); 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   // física do mouse para as imagens
@@ -96,7 +96,7 @@ export default function Services() {
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
                     onMouseMove={handleMouseMove}
-                    // onClick={() => navigate(service.href)} 
+                    onClick={() => navigate(service.href)} 
                     className="group relative border-b border-white/20 py-10 md:py-14 cursor-pointer flex flex-col md:flex-row md:items-center justify-between -mx-6 px-6 lg:mx-0 lg:px-2 z-10 hover:z-20"
                   >
 
@@ -164,3 +164,5 @@ export default function Services() {
     </section>
   );
 }
+
+export default Services;
