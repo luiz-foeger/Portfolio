@@ -33,20 +33,24 @@ body {
     background-color: #050505 !important;
     color: #fff;
     overscroll-behavior-y: none;
-    user-select: none;
+    min-height: 100vh;
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    /* user-select: none; */
 }
 
 /* html {
     scroll-behavior: smooth;
-} */
-
+}
+    
 body {
     background: radial-gradient(circle, rgba(16, 23, 28, 1) 0%, rgba(5, 8, 10, 1) 100%);
     animation: fadeInAnimation ease 2s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     height: 100vh;
-}
+} */
 
 body {
   cursor: none;
